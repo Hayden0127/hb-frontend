@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { NgApexchartsModule } from "ng-apexcharts";
 
-import { PaymentDashboardComponent } from './payment-dashboard/payment-dashboard.component';
+import { ViewMyBookingComponent } from './view-my-booking.component';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../app.module';
 import { HttpClient } from '@angular/common/http';
@@ -17,10 +16,10 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Payment Dashboard',
-      description: 'Description'
+      title: 'View My Booking',
+      description: ''
     },
-    component: PaymentDashboardComponent
+    component: ViewMyBookingComponent
   }
 ];
 
@@ -28,17 +27,18 @@ const routes: Routes = [
   imports: [
     FormsModule, 
     CommonModule, 
-    RouterModule.forChild(routes),
     TranslateModule,
-    NgApexchartsModule,
     NgbDropdownModule,
     NumberFormatter,
     DecimalTimeFormatter,
-    FeatherModule
+    FeatherModule,
+    RouterModule.forChild(routes)
   ],
   providers: [
     TranslateService
   ],
-  declarations: [PaymentDashboardComponent]
+  declarations: [
+    ViewMyBookingComponent
+  ]
 })
-export class PaymentDashboardModule {}
+export class ViewMyBookingModule { }

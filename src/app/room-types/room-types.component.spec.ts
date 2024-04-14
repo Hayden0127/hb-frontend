@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CpFormComponent } from './cp-form.component';
+import { RoomTypesComponent } from './room-types.component';
 
-describe('CpFormComponent', () => {
-  let component: CpFormComponent;
-  let fixture: ComponentFixture<CpFormComponent>;
+describe('RoomTypesComponent', () => {
+  let component: RoomTypesComponent;
+  let fixture: ComponentFixture<RoomTypesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CpFormComponent ]
+      declarations: [ RoomTypesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CpFormComponent);
+    fixture = TestBed.createComponent(RoomTypesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

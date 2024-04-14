@@ -19,12 +19,11 @@ export const Approutes: Routes = [
      
       {
         path: 'viewmybooking',
-        loadChildren: () => import('./payment/payment.module').then(m => m.PaymentDashboardModule)
+        loadChildren: () => import('./view-my-booking/view-my-booking.module').then(m => m.ViewMyBookingModule)
       },
-    
       {
         path: 'roomtypes',
-        loadChildren: () => import('./cpmonitoring/cpmonitoring.module').then(m => m.CpmonitoringModule),
+        loadChildren: () => import('./room-types/room-types.module').then(m => m.RoomTypesModule),
       },
       {
         path: 'getstarted',
@@ -59,10 +58,7 @@ export const Approutes: Routes = [
         path: 'overview',
         loadChildren: () => import('./overview/overview.module').then(m => m.OverviewModule),
       },
-      // {
-      //   path: 'scheduleinstall',
-      //   loadChildren: () => import('./scheduleinstall/scheduleinstall.module').then(m => m.ScheduleinstallModule)
-      // },
+
       
     ],
   },

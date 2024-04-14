@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs/operators';
-import { chartPointStatusChartOptions } from '../cpmonitoring/cpmonitoring-chart/cpmonitoring-chart.component';
+// import { chartPointStatusChartOptions } from '../cpmonitoring/cpmonitoring-chart/cpmonitoring-chart.component';
 import { OverviewDashboard } from '../shared-models/cpmonitoring/overview-dashboard';
 import { CpMonitoringService } from '../shared-service/cpmonitoring/cpmonitoring.service';
 import { cpStatus, cpTransactionStatus } from '../shared-utilities/system-data';
@@ -33,7 +33,7 @@ export type ChartOptions = {
 })
 export class OverviewComponent implements OnInit {
 
-  public chartPointStatusChartOptions: Partial<chartPointStatusChartOptions>;
+  // public chartPointStatusChartOptions: Partial<chartPointStatusChartOptions>;
   public areaChartOptions: Partial<ChartOptions>;
 
   filterDays: number = 0;
@@ -100,34 +100,34 @@ export class OverviewComponent implements OnInit {
         // this.titleService.setTitle(event['title']);
       });
 
-    this.chartPointStatusChartOptions = {
-      series: this.data.map(x => x.percentage),
-      chart: {
-        type: 'donut',
-        height: 140
-      },
-      plotOptions: {
-        pie: {
-          donut: {
-            size: '80px'
-          }
-        }
-      },
-      tooltip: {
-        fillSeriesColor: false,
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        width: 0,
-      },
-      legends: {
-        show: false,
-      },
-      labels: this.data.map(x => x.place),
-      colors: this.data.map(x => x.colorCode),
-    };
+    // this.chartPointStatusChartOptions = {
+    //   series: this.data.map(x => x.percentage),
+    //   chart: {
+    //     type: 'donut',
+    //     height: 140
+    //   },
+    //   plotOptions: {
+    //     pie: {
+    //       donut: {
+    //         size: '80px'
+    //       }
+    //     }
+    //   },
+    //   tooltip: {
+    //     fillSeriesColor: false,
+    //   },
+    //   dataLabels: {
+    //     enabled: false,
+    //   },
+    //   stroke: {
+    //     width: 0,
+    //   },
+    //   legends: {
+    //     show: false,
+    //   },
+    //   labels: this.data.map(x => x.place),
+    //   colors: this.data.map(x => x.colorCode),
+    // };
 
     //Area chart.
     this.areaChartOptions = {
