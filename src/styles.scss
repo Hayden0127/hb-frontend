@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+// @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800');
+
+@font-face {
+    font-family: 'Satoshi-Regular';
+    src: url('./assets/fonts/Satoshi-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Satoshi-Bold';
+    src: url('./assets/fonts/Satoshi-Bold.otf');
+}
+
+* {
+    font-family: 'Satoshi-Regular';
+    letter-spacing: 0.5px;
+}
+
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+    font-family: 'Satoshi-Bold';
+}
+
+app-root {   z-index: 1; }  
+.toast-class {   z-index: 4; }
+
+
+label.required::after {
+    content: '*';
+    color: #E82526;
+    display: inline-block;
+    margin-left: 2px;
+}

@@ -1,0 +1,168 @@
+.full-height > div.container {
+    padding: 25px;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding-bottom: 60px;
+    max-height: 70vh;   
+}
+
+.full-height {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    position: relative;
+    width: 100%
+}
+
+.form-label {
+    font-weight: 700;
+    font-size: 14px;
+    color: #818285;
+    margin: 5px;
+} 
+
+.form-control, .form-select {
+    font-size: 15px;
+    min-width: 350px;
+}
+
+.card.table-default {
+    border-radius: 0px;
+
+    th {
+        padding: 10px 12px;
+    }
+
+    thead {
+        background: #F0F0F0;
+        color: #506194;
+        font-size: 14px;
+        margin: 5px;    
+    }
+
+    tbody {
+        font-size: 15px;
+        color: #000000;
+        line-height: 25px;
+
+        a {
+            &.circle {
+                display: inline-block;
+                background-color: #FFE8E8;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                text-align: center;
+                position: relative;
+            }
+
+            i-feather {
+                position: absolute;
+                top: -2px;
+                right: 4.95px;
+                color: #E82526;
+                width: 15px;
+                height: 30px;
+            }
+
+            &:hover {
+                cursor: pointer;
+                opacity: 0.7;
+            }
+        }
+    }
+
+    .btn-footer {
+        color: #506194;
+        font-size: 14px;
+        i-feather {
+            margin: 0 5px;
+            width: 17px;
+            height: 17px;
+            margin-top: -5px;
+        }
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+.card.form {
+    background: #F0F0F0;
+    border-radius: 10px;
+    padding: 10px 10px 17px;
+
+
+    .container {
+        padding: 25px;
+        max-width: 400px;
+    }
+    
+    .form-label {
+        max-width: 125px !important;
+        margin-right: 15px;
+    }
+
+    .form-control, .form-select {
+        min-width: 177px !important;
+        max-width: 250px !important;
+
+        &:disabled {
+            opacity: 0.5 !important;
+        }
+    }
+
+    .btn-orange {
+        color: #ffffff;
+        background: #FFA34B;
+        font-size: 15px;
+        border-color: #FFA34B;
+    }
+}
+
+.button-bar {
+    flex: 0 1 40px;
+    padding: 15px 20px;
+    box-shadow: 0px -5px 8px rgba(183, 183, 183, 0.13);
+    background: transparent;
+    position: sticky;
+    bottom: 0;
+    width: inherit;
+    max-width: inherit;
+
+    &.assignForm {
+        background: #ffffff;
+    }
+
+    &.editForm {
+        background: #F8F8F8;
+    }
+
+    button {
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 0px
+    }
+
+    .btn-outline-orange {
+        background-color: #ffffff;
+
+        &:hover {
+            background-color: #fb8c00;
+            color: #ffffff;
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f2f2f2; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dedede; 
+}

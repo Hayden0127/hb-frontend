@@ -1,0 +1,240 @@
+<!-- Navbar Header for horizontal only -->
+<div class="navbar-header d-none d-lg-block">
+  <!-- This is for the sidebar toggle which is visible on mobile only -->
+  <a
+    (click)="showMobileMenu = !showMobileMenu"
+    class="nav-toggler waves-effect waves-light d-block d-lg-none"
+    href="javascript:void(0)"
+  >
+    <i [ngClass]="showMobileMenu ? 'ti-close' : 'ti-menu'"></i>
+  </a>
+  <!-- ============================================================== -->
+  <!-- Logo -->
+  <!-- ============================================================== -->
+  <a class="navbar-brand" href="/">
+    <!-- Logo icon -->
+    <b class="logo-icon">
+      <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+      <!-- Dark Logo icon -->
+      <!-- <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" /> -->
+      <!-- Light Logo icon -->
+      <!-- <img
+        src="assets/images/logo-light-icon.png"
+        alt="homepage"
+        class="light-logo"
+      /> -->
+      <img width="30px" src = "assets/icons/coconut.svg" class="mx-2"/>
+    </b>
+    <!--End Logo icon -->
+    <!-- Logo text -->
+    <span class="logo-text">
+      <!-- dark Logo text -->
+      <!-- <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
+      <!-- Light Logo text -->
+      <!-- <img
+        src="assets/images/logo-light-text.png"
+        class="light-logo"
+        alt="homepage"
+      /> -->
+    </span>
+
+    <span class="logo-text">
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="48" height="13" viewBox="0 0 48 13" fill="none">
+        <path d="M6.552 12.7016C9.4584 12.7016 11.7096 10.988 12.18 8.4008H9.9456C9.5424 9.7616 8.2656 10.6352 6.6024 10.6352C4.3512 10.6352 2.9064 8.9552 2.9064 6.3512C2.9064 3.7304 4.3344 2.084 6.6024 2.084C8.232 2.084 9.4584 2.924 9.8784 4.352H12.1464C11.7264 1.7144 9.5592 0.0176001 6.6528 0.0176001C3.0576 0.0176001 0.6552 2.5544 0.6552 6.368C0.6552 10.2152 2.9736 12.7016 6.552 12.7016ZM18.9637 8.2664C21.4165 8.2664 23.0293 6.6032 23.0293 4.2344C23.0293 1.832 21.4333 0.2192 18.9637 0.2192H14.1085V12.5H16.2589V8.2664H18.9637ZM18.5437 2.1344C19.9717 2.1344 20.7781 2.8736 20.7781 4.2176C20.7781 5.5616 19.9885 6.3512 18.5101 6.3512H16.2589V2.1344H18.5437ZM26.9213 12.5V8.0984C26.9213 6.5696 26.9045 5.4104 26.7869 4.6712L29.8949 12.5H31.8773L35.0021 4.6544C34.8845 5.528 34.8845 6.2504 34.8845 8.72V12.5H36.9677V0.2192H34.8509L30.8861 9.9968L26.9213 0.2192H24.8381V12.5H26.9213ZM38.8489 3.6464C38.8489 5.528 39.9409 6.7208 42.0241 7.1744L43.9729 7.6112C44.9809 7.8296 45.4009 8.3168 45.4009 9.14C45.4009 10.1648 44.4937 10.7864 43.0657 10.7864C41.6881 10.7864 40.8481 10.1648 40.8313 9.1232H38.6809C38.7313 11.324 40.4449 12.7184 43.0657 12.7184C45.7705 12.7184 47.5513 11.24 47.5513 8.9552C47.5513 7.124 46.5265 6.0488 44.4265 5.5952L42.4945 5.1752C41.4697 4.94 40.9993 4.4528 40.9993 3.5792C40.9993 2.5544 41.8561 1.916 43.1833 1.916C44.3929 1.916 45.1489 2.5376 45.1993 3.596H47.3497C47.2825 1.3784 45.7033 0.000800271 43.2169 0.000800271C40.6297 0.000800271 38.8489 1.496 38.8489 3.6464Z" fill="#4D4E54"/>
+      </svg> -->
+      <span><span class="logo-text-lg" >The Beverly Hills Hotel</span></span>
+    </span>
+
+    <span class="logo-text">
+      <small class="text-muted mx-2">|</small>
+      <small class="m-0 p-0 text-muted" style="font-size: 15px">The Beverly Hills Hotel Booking System</small>
+    </span>
+  </a>
+  <!-- ============================================================== -->
+  <!-- End Logo -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Toggle which is visible on mobile only -->
+  <!-- ============================================================== -->
+  
+  
+  <a
+    class="topbartoggler d-block d-lg-none waves-effect waves-light"
+    href="javascript:void(0)"
+    (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expanded]="!isCollapsed"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+  >
+    <i class="ti-more"></i>
+  </a>
+</div>
+
+
+
+<!-- ============================================================== -->
+<!-- Right side toggle and nav items -->
+<!-- ============================================================== -->
+<ul class="navbar-nav float-end">
+  <li class="d-flex align-items-center mx-2">
+      <span class="badge px-2 py-1" style="background-color: #C8F5FA; color: #006C78">{{ today | date: 'EEEE, d MMM y hh:mma' }}</span>
+  </li>
+  <li class="nav-item dropdown" ngbDropdown placement="bottom-start">
+    <a
+      ngbDropdownToggle
+      class="nav-link dropdown-toggle"
+      href="javascript:void(0)"
+      id="navbarDropdown"
+      role="button"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      <i class="flag-icon flag-icon-{{ selectedLanguage.icon }}"></i>
+    </a>
+    <div
+      class="dropdown-menu dropdown-menu-right"
+      aria-labelledby="navbarDropdown"
+      ngbDropdownMenu
+    >
+      <span
+        class="dropdown-item"
+        href="#"
+        *ngFor="let lang of languages"
+        (click)="changeLanguage(lang)"
+      >
+        <i class="flag-icon flag-icon-{{ lang.icon }}"></i>
+        <span
+          >{{ lang.language }}
+          <span *ngIf="lang.type">({{ lang.type }})</span>
+        </span>
+      </span>
+    </div>
+  </li>
+  <!-- ============================================================== -->
+  <!-- Comment -->
+  <!-- ============================================================== -->
+  <!-- <li class="nav-item dropdown" ngbDropdown placement="bottom-end">
+    <a
+      ngbDropdownToggle
+      class="nav-link dropdown-toggle waves-effect waves-dark"
+      href="javascript:void(0)"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      <i-feather name="bell" class="feather-sm"></i-feather>
+    </a>
+    <div
+      class="dropdown-menu mailbox dropdown-menu-end dropdown-menu-animate-up"
+      ngbDropdownMenu
+    >
+      <span class="with-arrow">
+        <span class="bg-primary"></span>
+      </span>
+      <ul class="list-style-none">
+        <li>
+          <div class="drop-title bg-primary text-white">
+            <h4 class="mb-0 mt-1 text-white">4 New</h4>
+            <span class="fw-light">Notifications</span>
+          </div>
+        </li>
+        <li>
+          <div class="message-center notifications" [perfectScrollbar]="config">
+            <a
+              href="javascript:void(0)"
+              class="message-item border-bottom d-block text-decoration-none"
+              *ngFor="let notification of notifications"
+            >
+              <span
+                class="btn btn-circle rounded-circle {{ notification.btn }}"
+              >
+                <i class="{{ notification.icon }}"></i>
+              </span>
+              <span class="mail-contnet d-inline-block w-75 ps-3 align-middle">
+                <h5 class="message-title">{{ notification.title }}</h5>
+                <span class="mail-desc fs-2 d-block text-muted text-truncate">{{
+                  notification.subject
+                }}</span>
+                <span class="time fs-2 d-block text-muted text-truncate">{{
+                  notification.time
+                }}</span>
+              </span>
+            </a>
+          </div>
+        </li>
+        <li class="border-top p-3 d-grid">
+          <button class="btn btn-info">Check all notifications</button>
+        </li>
+      </ul>
+    </div>
+  </li> -->
+  <!-- ============================================================== -->
+  <!-- End Comment -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Messages -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- End Messages -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- mega menu -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- End mega menu -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- User profile and search -->
+  <!-- ============================================================== -->
+  <li class="nav-item" ngbDropdown placement="bottom-end">
+    <a
+      ngbDropdownToggle
+      class="nav-link text-muted waves-effect waves-dark pro-pic"
+      href="javascript:void(0)"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      <img
+        src="assets/images/users/user1.jpg"
+        alt="user"
+        class="rounded-circle"
+        width="31"
+      />
+    </a>
+    <div class="dropdown-menu-right user-dd" ngbDropdownMenu>
+      <div class="d-flex no-block align-items-center p-3">
+        <div class="">
+          <img
+            src="assets/images/users/user1.jpg"
+            alt="user"
+            class="rounded-circle"
+            width="50"
+          />
+        </div>
+        <div class="ms-2">
+          <h4 class="mb-0 fs-4">{{ currentUserName }}</h4>
+          <p class="text-muted mb-0 fs-2">{{ currentUserEmail }}</p>
+        </div>
+      </div>
+      <div class="dropdown-divider mt-0"></div>
+      <a class="dropdown-item text-black" [routerLink]="'/'">My Profile</a
+      >
+      <a class="dropdown-item text-black" [routerLink]="'/'">Settings</a
+      >
+      <a class="dropdown-item text-black" [routerLink]="'/'">Pricing</a
+      >
+      <a class="dropdown-item text-black" [routerLink]="'/'">FAQ</a
+      >
+      <a class="dropdown-item text-black" [routerLink]="'/'">Help</a
+      >
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item text-black" (click)="logOut()">Log out</a
+      >
+    </div>
+  </li>
+  <!-- ============================================================== -->
+  <!-- User profile and search -->
+  <!-- ============================================================== -->
+</ul>

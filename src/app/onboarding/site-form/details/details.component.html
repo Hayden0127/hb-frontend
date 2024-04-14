@@ -1,0 +1,89 @@
+<div class="p-4">
+    <p class="h3 fw-bold">Provide the details for the Charging Point</p>
+    <small class="">Please key-in all of the information below and click Continue.</small>
+</div>
+
+<div class="d-flex justify-content-center my-4">
+    <div #detailsForm="ngForm" ngForm class="container w-75">
+        <div class="form-group mb-3">
+            <label class="form-label required" for="personInCharge">Person-In-Charge</label>
+            <input type="text" class="form-control" id="personInCharge" name="personInCharge" placeholder="Key-in the person-in-charge name here" 
+                [class.is-invalid]="personInCharge.invalid && personInCharge.touched"
+                [(ngModel)]="siteProfileDetails.personInCharge" #personInCharge="ngModel" required [readonly]="clicked">
+
+            <div class="text-danger" *ngIf="personInCharge.invalid && personInCharge.touched">
+                <small class="err-msg" *ngIf="personInCharge.errors?.required">Person-In-Charge is required.</small>
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label required" for="siteName">Site Name</label>
+            <input type="text" class="form-control" id="siteName" name="siteName" placeholder="Key-in the site name here" 
+                [class.is-invalid]="siteName.invalid && siteName.touched"
+                [(ngModel)]="siteProfileDetails.siteName" #siteName="ngModel" required [readonly]="clicked">
+
+            <div class="text-danger" *ngIf="siteName.invalid && siteName.touched">
+                <small class="err-msg" *ngIf="siteName.errors?.required">Site Name is required.</small>
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label required" for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Key-in the email name here" 
+                [pattern]="regexValidation.email"
+                [class.is-invalid]="email.invalid && email.touched"
+                [(ngModel)]="siteProfileDetails.email" #email="ngModel" required [readonly]="clicked">
+
+            <div class="text-danger" *ngIf="email.invalid && email.touched">
+                <small class="err-msg" *ngIf="email.errors?.required">Email is required.</small>
+                <small class="err-msg" *ngIf="email.errors?.pattern">Email format is incorrect.</small>
+            </div>
+        </div>
+
+        <div class="flex-box mb-3">
+            <div class="col form-group">
+                <label class="form-label" for="officeNo">Office No.</label>
+                <input type="text" class="form-control" id="officeNo" name="officeNo" placeholder="Provide the office no. here" 
+                    [pattern]="regexValidation.contactNo"
+                    [class.is-invalid]="officeNo.invalid && officeNo.touched" (keypress)="numberOnly($event)"
+                    [(ngModel)]="siteProfileDetails.officeNo" #officeNo="ngModel" [readonly]="clicked">
+                
+                <div class="text-danger" *ngIf="officeNo.invalid && officeNo.touched">
+                    <small class="err-msg" *ngIf="officeNo.errors?.pattern">Only numeric is allowed.</small>
+                </div>
+            </div>
+
+            <div class="col form-group">
+                <label class="form-label required" for="mobileNo">Mobile Phone No.</label>
+                <input type="text" class="form-control" id="mobileNo" name="mobileNo" placeholder="Provide the mobile phone no. here" 
+                    [pattern]="regexValidation.contactNo"
+                    [class.is-invalid]="mobileNo.invalid && mobileNo.touched" (keypress)="numberOnly($event)"
+                    [(ngModel)]="siteProfileDetails.mobileNo" #mobileNo="ngModel" required [readonly]="clicked">
+
+                <div class="text-danger" *ngIf="mobileNo.invalid && mobileNo.touched">
+                    <small class="err-msg" *ngIf="mobileNo.errors?.required">Mobile Phone No. is required.</small>
+                    <small class="err-msg" *ngIf="mobileNo.errors?.pattern">Only numeric is allowed.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label" for="loadlimit">Load Limit (kW) <i-feather name="battery-charging" class="feather-sm fa"></i-feather></label>
+            <input type="number" class="form-control" id="loadlimit" name="loadlimit" placeholder="Key-in load limit" 
+                [class.is-invalid]="loadlimit.invalid && loadlimit.touched"
+                [(ngModel)]="siteProfileDetails.loadLimit" #loadlimit="ngModel" [readonly]="clicked">
+        </div>
+    </div>
+</div>
+
+<div class="nav-bottom d-flex" [class.card-layout]="viewMode == 'new-site'">
+    <div class="ms-auto">
+        <button class="btn btn-outline-default nav-btn" (click)="back()">Back</button>
+        <button class="btn btn-default nav-btn" (click)="next()" [disabled]="detailsForm.invalid">
+            <span *ngIf="viewMode == 'letsgo'">Continue</span>
+            <span *ngIf="viewMode == 'new-site'">Next</span>
+        </button>
+    </div>
+</div>
+
+<notifier-container></notifier-container>

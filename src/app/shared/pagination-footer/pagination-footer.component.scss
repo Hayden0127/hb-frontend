@@ -1,0 +1,54 @@
+.card {
+    box-shadow: 0px 4px 15px rgba(183, 183, 183, 0.2);
+    border-radius: 10px;
+}
+
+.left-label {
+    font-size: 14px;
+    p {
+        line-height: 19px;
+        color: #A7A7A7;
+    }
+
+    select {
+        width: 70px;
+        margin: 0 5px;
+    }
+}
+
+.right-label button {
+    border-radius: 50px;
+    width: 79px;
+    height: 30px;
+    font-size: 14px;
+    line-height: 19px;
+    margin-left: 10px;
+
+    span {
+        margin: 0 8px
+    }
+
+    i-feather {
+        margin-top: -5px;
+        width: 15px;
+        height: 17px;
+    }
+
+    &.btn-prev {
+        background: #e4e3e3;        
+    }
+
+    &.btn-next {
+        border: 1px solid #506194;
+        color: #506194;
+        background: #FFFFFF;
+    }
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &:active {
+        opacity: 0.95;
+    }
+}

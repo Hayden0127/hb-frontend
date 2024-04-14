@@ -1,0 +1,108 @@
+<div class="p-4">
+    <p class="h3 fw-bold">Provide the Connector details for the Charging Point</p>
+    <small class="">Please key-in all of the information below and click Next.</small>
+</div>
+
+<div >
+    <div #connectorForm="ngForm" ngForm class="d-flex justify-content-center">
+        <div class="container w-75">
+            <div class="form-group mb-3">
+                <label class="form-label required" for="cpSite">Select Charge Point Site</label>
+                <select name="cpSite" id="cpSite" class="form-select" [class.is-invalid]="cpSite.invalid && cpSite.touched"
+                    [class.text-muted]="cpConnectorForm.cpDetails.cpSiteDetailsId == null"
+                    [(ngModel)]="cpConnectorForm.cpDetails.cpSiteDetailsId" #cpSite="ngModel" required>
+                    <option hidden selected [value]="null">Please select</option>
+                    <option class="text-dark" *ngFor="let cps of cpSiteList" [value]="cps.id">{{ cps.siteName }}</option>
+                </select>
+        
+                <div class="text-danger" *ngIf="cpSite.invalid && cpSite.touched">
+                    <small class="err-msg" *ngIf="cpSite.errors?.required">Charge Point Site is required.</small>
+                </div>
+        
+            </div>
+        
+            <div class="form-group mb-3">
+                <label class="form-label required" for="cpName">Charge Point Name</label>
+                <input type="text" class="form-control" id="cpName" name="cpName" placeholder="Key-in the Charge Point name here"  
+                [class.is-invalid]="cpName.invalid && cpName.touched"
+                [(ngModel)]="cpConnectorForm.cpDetails.name" #cpName="ngModel" required>
+                
+                <div class="text-danger" *ngIf="cpName.invalid && cpName.touched">
+                    <small class="err-msg" *ngIf="cpName.errors?.required">Charge Point Name is required.</small>
+                    <small class="err-msg" *ngIf="cpName.errors?.exist">Charge Point Name is already exist.</small>
+                </div>
+            </div>    
+            
+            <div class="form-group mb-3">
+                <label class="form-label required" for="serialNo">Serial No.</label>
+                <input type="text" class="form-control" id="serialNo" name="serialNo" placeholder="Key-in the Serial No. here"  
+                [class.is-invalid]="serialNo.invalid && serialNo.touched"
+                [(ngModel)]="cpConnectorForm.cpDetails.serialNo" #serialNo="ngModel" required>
+                
+                <div class="text-danger" *ngIf="serialNo.invalid && serialNo.touched">
+                    <small class="err-msg" *ngIf="serialNo.errors?.required">Serial No is required.</small>
+                    <small class="err-msg" *ngIf="serialNo.errors?.exist">Serial No is already exist.</small>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center my-4">
+        <div class="table-responsive w-75 px-3">
+            <table #tableForm="ngForm" ngForm class="table w-100">
+                <thead class="table-header">
+                    <tr>
+                        <th width="35%">Connector Name</th>
+                        <th width="35%">Product Type</th>
+                        <th width="50%">Power Output</th>
+                        <th width="4%" class="p-2">
+                            <button placement="left" ngbTooltip="Add" class="btn btn-default btn-plus" (click)="add()">
+                                <i-feather name="plus" class="feather-md h-auto"></i-feather>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>    
+                <tbody>
+                    <tr *ngFor="let c of cpConnectorForm.cpConnectorList; let i = index">
+                        <td>
+                            <input type="text" class="form-control" id="connectorName{{i}}" name="connectorName{{i}}" placeholder="Key-in the connector name here" 
+                                [class.is-invalid]="connectorName.invalid && connectorName.touched"
+                                [(ngModel)]="c.name" #connectorName="ngModel" required>
+                        </td>                    
+                        <td>
+                            <select name="productType{{i}}" id="productType{{i}}" class="form-select" 
+                                [class.text-muted]="c.productTypeId == null"  [class.is-invalid]="productType.invalid && productType.touched"
+                                [(ngModel)]="c.productTypeId" #productType="ngModel" required (change)="setCPProductType(i, $event.target.value)">
+                                <option hidden selected [value]="null">Please select</option>
+                                <option class="text-dark" *ngFor="let pt of productTypeList" [value]="pt.id">{{ pt.name }}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="powerOutput{{i}}" name="powerOutput{{i}}" placeholder="kWh" (keypress)="$event.keyCode != 46 && $event.keyCode != 101 ? true : false"
+                                [class.is-invalid]="powerOutput.invalid && powerOutput.touched" min="1"
+                                [(ngModel)]="c.powerOutput" #powerOutput="ngModel" required>
+                            
+                            <span *ngIf="powerOutput.invalid && powerOutput.errors?.min" class="text-danger"><small class="err-msg">must be larger than 0</small></span>
+                        </td>
+                        <td class="text-center">
+                           <a *ngIf="i > 0" class="pointer" placement="right" ngbTooltip="Remove" (click)="remove(i)">
+                                <i-feather name="x" class="form-control-plaintext feather-sm"></i-feather>
+                           </a> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    
+        </div>
+    </div>  
+</div>
+
+<div class="nav-bottom d-flex">
+    <div class="ms-auto">
+        <button class="btn btn-default nav-btn" (click)="next()" [disabled]="connectorForm.invalid">
+            <span>Next</span>
+        </button>
+    </div>
+</div>
+
+<notifier-container></notifier-container>

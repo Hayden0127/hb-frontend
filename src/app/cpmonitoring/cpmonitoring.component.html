@@ -1,0 +1,175 @@
+<div class="page-breadcrumb mb-3" *ngIf="currentPageTitle != 'Chart'">
+    <div class="row mb-2">
+        <h3 class="py-1 px-4">Room Types</h3>
+    </div>
+    <section class="section section-lg pt-lg-0 mt--300"> 
+        <section class="section pt-lg-0 ">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-12 pb-100">
+                <div class="row row-grid">
+                  <div class="row pb-5">
+                    <div class="card card-lift--hover shadow border-0">
+                      <div class="card-body py-5">
+                        <div class="container">
+                          <div class="row row-grid align-items-center">
+                            <div class="col-md-6 order-md-1">
+                              <img src="./assets/room/premium.jpg" class="img-fluid ">
+                            </div>
+                            <div class="col-md-6 order-md-2">
+                              <div class="pr-md-5">
+                                <h2 class="pb-2">Build Premium</h2>
+                                <h5>A cosy well-designed room allows you to escape the urban hustle. The room equipe with a large balcony area with sea views.</h5>
+                                <p>Basic Amenities: WiFi, Safety Box, Coffee & Tea, Kettle, Hair Dryer, Slippers and Bottle of Water.</p>
+                                <ul class="list-unstyled mt-3">
+                                  <li class="py-2">
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge success-badge py-2">
+                                            <span class="circle"></span> 200 sqm
+                                        </span>
+                                    </div>
+                                  </li>
+                                  <li class="py-2">
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge success-badge py-2">
+                                            <span class="circle"></span> King Sized Bed
+                                        </span>
+                                    </div>
+                                  </li>
+                                  <li class="py-2">
+                                    <div class="d-flex align-items-center">
+                                        <span class="badge success-badge py-2">
+                                            <span class="circle"></span> 43″ Smart TV
+                                        </span>
+                                    </div>
+                                  </li>
+                                  <li class="py-2">
+                                      <div class="d-flex align-items-center">
+                                        <span class="badge success-badge py-2">
+                                            <span class="circle"></span> Balcony Area
+                                        </span>
+                                    </div>
+                                    </li>
+                                    <div class="d-flex ">
+                                        <div class="ms-auto">
+                                            <a href="javascript:void(0)" class="btn btn-default mt-4 me-2 w-100" (click)="navToBook()">Book Room</a>
+                                        </div>
+                                      </div>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row pb-5">
+                    <div class="card card-lift--hover shadow border-0">
+                      <div class="card-body py-5">
+                          <div class="container">
+                              <div class="row row-grid align-items-center">
+                                <div class="col-md-6 order-md-1">
+                                  <img src="./assets/room/cosy.jpg" class="img-fluid ">
+                                </div>
+                                <div class="col-md-6 order-md-2">
+                                  <div class="pr-md-5">
+                                    <h2 class="pb-2">Deluxe Cosy</h2>
+                                    <h5>Get your chicest sleep in these contemporary and modern designed bedrooms. </h5>
+                                    <p>Basic Amenities: WiFi, Safety Box, Coffee & Tea, Kettle, Hair Dryer, Slippers and Bottle of Water. An elegant space designed for relaxation and an unrivalled experience stay.</p>
+                                    <ul class="list-unstyled mt-3">
+                                      <li class="py-2">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge success-badge py-2">
+                                                <span class="circle"></span> 60 sqm
+                                            </span>
+                                        </div>
+                                      </li>
+                                      <li class="py-2">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge success-badge py-2">
+                                                <span class="circle"></span> Queen Sized Bed
+                                            </span>
+                                        </div>
+                                      </li>
+                                      <li class="py-2">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge success-badge py-2">
+                                                <span class="circle"></span> 43″ Smart TV
+                                            </span>
+                                        </div>
+                                      </li>
+                                      <div class="d-flex ">
+                                        <div class="ms-auto">
+                                            <a href="javascript:void(0)" class="btn btn-default mt-4 me-2 w-100" (click)="navToBook()">Book Room</a>
+                                        </div>
+                                      </div> 
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="card card-lift--hover shadow border-0">
+                      <div class="card-body py-5">
+                          <div class="container">
+                              <div class="row row-grid align-items-center">
+                                <div class="col-md-6 order-md-1">
+                                  <img src="./assets/room/simple.jpg" class="img-fluid ">
+                                </div>
+                                <div class="col-md-6 order-md-2">
+                                  <div class="pr-md-5">
+                                    <h2>Standard Simple</h2>
+                                    <h5>Our delux cosy rooms are lovingly detailed with spacious and comfortable design that allow you to experience a warm homely feeling far away from home. </h5>
+                                    <p>Basic Amenities: WiFi, Safety Box, Coffee & Tea, Kettle, Hair Dryer, Slippers and Bottle of Water.</p>
+                                    <ul class="list-unstyled mt-3">
+                                      <li class="py-2">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge success-badge py-2">
+                                                <span class="circle"></span> 35 sqm
+                                            </span>
+                                        </div>
+                                      </li>
+                                      <li class="py-2">
+                                          <div class="d-flex align-items-center">
+                                            <span class="badge success-badge py-2">
+                                                <span class="circle"></span> Queen Sized Bed or 2 Single Beds
+                                            </span>
+                                        </div>
+                                      </li>
+                                      <li class="py-2">
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge success-badge py-2">
+                                                <span class="circle"></span> 43″ Smart TV
+                                            </span>
+                                        </div>
+                                      </li>
+                                      <div class="d-flex ">
+                                        <div class="ms-auto">
+                                            <a href="javascript:void(0)" class="btn btn-default mt-4 me-2 w-100" (click)="navToBook()">Book Room</a>
+                                        </div>
+                                      </div>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      
+              </div>
+            </div>
+          </div>
+        </section>
+       </section>
+</div>
+
+<!-- <div class="card" [class.bg-none]="currentPageTitle == 'Chart'">
+    <router-outlet></router-outlet>
+</div> -->
+
+

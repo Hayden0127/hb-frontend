@@ -1,0 +1,35 @@
+th[sortable] small {
+    cursor: pointer; 
+	display: flex;
+}
+
+th[sortable].default small:after {
+    content: '';
+    display: block;
+    background: url(../../../assets/icons/sort2.svg) no-repeat left center;
+    background-size: 12px;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px
+}
+
+
+th[sortable].asc small:after {
+    content: "";
+    display: block;
+    background: url(../../../assets/icons/sort-up.svg) no-repeat left center;
+    background-size: 8px;
+    width: 20px;
+    height: 20px;
+    margin-left: 7px
+}
+
+th[sortable].desc small:after {
+    content: "";
+    display: block;
+    background: url(../../../assets/icons/caret-down.svg) no-repeat left center;
+    background-size: 8px;
+    width: 20px;
+    height: 20px;
+    margin-left: 7px
+}

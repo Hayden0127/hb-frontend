@@ -1,0 +1,63 @@
+
+
+    <div class="card-body-2">
+        <div class="row" style="display: flex; height: 656px;">
+
+            <!-- <div class="col-3" style="text-align: center; display: flex;  justify-content: center; align-items: center; padding: 10px; " >
+                <div style="padding: 10px; ">
+                    <img src="assets/images/cpimg.png"/>
+                    <p class="h4 fw-bold">Set CP Location</p>
+                    <small class="">Please provide the exact location and click any available locate icon to show monitoring data for the CP.</small>
+                </div>
+            </div> -->
+            
+
+                <!-- <div class="card-search-location mt-2 ">
+                    <div class="card-body">
+                        <h5 style="font-weight: bold;">Select country and type in the location :</h5>
+                        <div class="row">
+                            <div class="col-3">
+                                <select class="form-control form-select">
+                                    <option value="1">Malaysia</option>
+                                </select>
+                            </div>
+                            <div class="col-9 ">
+                                <div class="form-group input-group rounded">
+                                    <input type="text" class="form-control" placeholder="Enter your address here"
+                                    [(ngModel)]="address" autocorrect="off" autocapitalize="off" spellcheck="off" #search>
+                                    <i class="me-2 mdi mdi-crosshairs-gps"></i>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <agm-map [latitude]="marker.latitude" [longitude]="marker.longitude" [zoom]="zoom" [disableDefaultUI]="true"
+                    [streetViewControl]="false" (mapReady)="mapReady($event)" [fitBounds]="true">
+                    <agm-marker *ngFor="let m of cpMarker; let i = index" [latitude]="m.latitude" [longitude]="m.longitude" 
+                    [agmFitBounds]="true" (markerClick)="focusMarker(i)"
+                    [iconUrl]="{
+                        url: (m.online ? (m.isClicked ? markerIconUrl.green: markerIconUrl.blue) : (m.isClicked ? markerIconUrl.yellow: markerIconUrl.red)),
+                        scaledSize: {
+                          width: 30,
+                          height: 50
+                        }
+                      }">
+                     
+                        <agm-info-window #infoWindow [isOpen]="m.isClicked" [infoWindowClose]="m.isClicked == false">
+                            <div class="marker-info">
+                                <small class="fw-bold">CP Location</small>
+                                    <br>
+                                <small>{{m.address}}</small>
+                            </div>
+                            <div  class="marker-info">
+                                <small class="fw-bold">Maintenance Program</small>
+                                    <br>
+                                <small>{{m.maintenanceProgram}}</small>
+                            </div>
+                            <button class="btn btn-default nav-btn" (click)="monitorCP(m.id)">Monitor CP</button>
+                        </agm-info-window>
+                    </agm-marker>
+                </agm-map> -->
+          
+        </div>
+    </div>

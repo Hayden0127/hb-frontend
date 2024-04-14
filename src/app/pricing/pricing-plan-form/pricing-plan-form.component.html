@@ -1,0 +1,155 @@
+<div class="full-height">
+    <div #planForm="ngForm" ngForm class="container">
+        <div class="form-group mb-3">
+            <label class="form-label" for="cpName">Plan</label>
+            <input type="text" class="form-control" id="cpName" name="cpName" placeholder="Key-in the pricing plan name here"  
+            [class.is-invalid]="cpName.invalid && cpName.touched"
+            [(ngModel)]="pricingPlanForm.planName" #cpName="ngModel" required>
+            
+            <div class="text-danger" *ngIf="cpName.invalid && cpName.touched">
+                <small class="err-msg" *ngIf="cpName.errors?.required">Pricing Plan Name is required.</small>
+                <small class="err-msg" *ngIf="cpName.errors?.exist">Pricing Plan Name is already exist.</small>
+            </div>
+        </div>  
+
+        <div class="row">
+            <div class="col form-group mb-3">
+                <label class="form-label" for="fixedFee">Fixed Fee</label>
+                <input type="number" class="form-control" id="fixedFee" name="fixedFee" placeholder="0.0000"  
+                [class.is-invalid]="fixedFee.invalid && fixedFee.touched"
+                [(ngModel)]="pricingPlanForm.fixedFee" #fixedFee="ngModel" required>
+                
+                <div class="text-danger" *ngIf="fixedFee.invalid && fixedFee.touched">
+                    <small class="err-msg" *ngIf="fixedFee.errors?.required">Fixed Fee is required.</small>
+                </div>
+            </div>    
+
+            <div class="col form-group mb-3">
+                <label class="form-label" for="priceVaries">Price Varies</label>
+                <select name="priceVaries" id="priceVaries" class="form-select bg-white" [class.is-invalid]="priceVaries.invalid && priceVaries.touched"
+                    [class.text-muted]="pricingPlanForm.priceVariesId == null"
+                    [(ngModel)]="pricingPlanForm.priceVariesId" #priceVaries="ngModel" required
+                    (change)="checkPriceVaries()">
+                    <option hidden selected [value]="null">Please select</option>
+                    <option class="text-dark" *ngFor="let pv of priceVariesList" [value]="pv.id">{{ pv.name }}</option>
+                </select>
+        
+                <div class="text-danger" *ngIf="priceVaries.invalid && priceVaries.touched">
+                    <small class="err-msg" *ngIf="priceVaries.errors?.required">Price Varies is required.</small>
+                </div>    
+            </div>  
+        </div>
+
+        <div *ngIf="pricingPlanForm.priceVariesId == 3" class="form-group mb-4" >
+            <label class="form-label" for="perBlock">Per Block</label>
+            <input type="number" class="form-control" id="perBlock" name="perBlock" placeholder="0"  
+            [class.is-invalid]="perBlock.invalid && perBlock.touched"
+            [(ngModel)]="pricingPlanForm.perBlock" #perBlock="ngModel" required>
+            
+            <div class="text-danger" *ngIf="perBlock.invalid && perBlock.touched">
+                <small class="err-msg" *ngIf="perBlock.errors?.required">Per Block is required.</small>
+            </div>
+        </div>  
+
+        <div *ngIf="listView && pricingPlanForm.priceVariesId != null && pricingPlanForm.priceVariesId != 1" class="card table-default mt-2">
+            <table class="table table-borderless m-0">
+                <thead>
+                    <tr class="border-bottom">
+                        <th class="fw-bold">Charger Type</th>
+                        <th class="fw-bold">Charge</th>
+                        <th class="fw-bold">Unit</th>                    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-bottom" *ngFor="let pp of pricingPlanForm.pricingPlanTypeList; let i = index">
+                        <td>{{ pp.productTypeName }}</td>
+                        <td>{{ pp.priceRate | number: '1.4' }}</td>
+                        <td class="d-flex align-items-center">
+                            <span>{{ pp.unitName  }}</span>
+                            <a class="ms-auto circle" (click)="removeRecord(i)"><i-feather name="x"></i-feather></a>                        
+                        </td>
+                    </tr>                            
+                </tbody>
+                <tfoot>
+                    <tr class="border-bottom">
+                        <td colspan="3" class="p-1">
+                            <button class="btn btn-footer d-flex align-items-center justify-content-center p-1 w-100" [disabled]="displayProductTypeList.length == 0" (click)="addNew()"><i-feather name="plus"></i-feather> Add New</button>
+                        </td>   
+                    </tr> 
+                </tfoot>
+            </table>
+        </div>
+
+        <div *ngIf="formView" #form="ngForm" ngForm class="card form mt-2">
+            <div class="row"><a class="header-back" (click)="checkForm()"><i-feather name="arrow-left" class="feather-sm mx-2"></i-feather>Back To Listing</a></div>
+            <div class="container">
+                <div class="form-group d-flex justify-content-center mb-3">
+                    <label for="chargerType" class="col form-label text-end">Charger Type</label>
+                    <div class="col">
+                        <select name="chargerType" id="chargerType" class="form-select bg-white" [class.is-invalid]="chargerType.invalid && chargerType.touched"
+                            [class.text-muted]="_tempPricingPlanTypeForm.productTypeId == null"
+                            [(ngModel)]="_tempPricingPlanTypeForm.productTypeId" #chargerType="ngModel" required>
+                            <option hidden selected [value]="null">Please select</option>
+                            <option class="text-dark" *ngFor="let pt of displayProductTypeList" [value]="pt.id">{{ pt.name }}</option>
+                        </select>
+
+                        <div class="text-danger" *ngIf="chargerType.invalid && chargerType.touched">
+                            <small class="err-msg" *ngIf="chargerType.errors?.required">Charge Type is required.</small>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="form-group d-flex justify-content-center mb-3">
+                    <label for="chargeFee" class="col form-label text-end">Charge</label>
+                    <div class="col">
+                        <input type="number" class="form-control bg-white" placeholder="0.0000" id="chargeFee" name="chargeFee" [class.is-invalid]="chargeFee.invalid && chargeFee.touched"
+                        [(ngModel)]="_tempPricingPlanTypeForm.priceRate" #chargeFee="ngModel" required
+                        [disabled]="pricingPlanForm.priceVariesId == 1">
+        
+                        <div class="text-danger" *ngIf="chargeFee.invalid && chargeFee.touched">
+                            <small class="err-msg" *ngIf="chargeFee.errors?.required">Charge is required.</small>
+                        </div>    
+                    </div>
+                </div>
+
+                <div class="form-group d-flex justify-content-center mb-3">
+                    <label for="unit" class="col form-label text-end">Unit</label>
+                    <div class="col">
+                        <select name="unit" id="unit" class="col form-select bg-white" [class.is-invalid]="unit.invalid && unit.touched"
+                            [class.text-muted]="_tempPricingPlanTypeForm.unitId == null"
+                            [(ngModel)]="_tempPricingPlanTypeForm.unitId" #unit="ngModel" required
+                            [disabled]="pricingPlanForm.priceVariesId == 1">
+                            <option hidden selected [value]="null">Please select</option>
+                            <option class="text-dark" *ngFor="let unit of unitList" [value]="unit.id">{{ unit.name }}</option>
+                        </select>
+
+                        <div class="text-danger" *ngIf="unit.invalid && unit.touched">
+                            <small class="err-msg" *ngIf="unit.errors?.required">Unit is required.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex mb-3">
+                    <button class="btn btn-orange ms-auto" [disabled]="form.invalid" (click)="addRecord()">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-bar d-flex justify-content-end button-group" [ngClass]="formMode">
+        <div *ngIf="formMode == 'editForm'">
+            <button class="btn btn-outline-default" (click)="cancelForm()">Cancel</button>
+            <button class="btn btn-default" [disabled]="(planForm.invalid) || (pricingPlanForm.priceVariesId != 1 && pricingPlanForm.pricingPlanTypeList.length == 0)" (click)="submitForm()">Save</button>    
+        </div>
+
+        <div *ngIf="formMode == 'newForm'">
+            <button class="btn btn-outline-default" (click)="cancelForm()">Cancel</button>
+            <button class="btn btn-default" [disabled]="planForm.invalid || (pricingPlanForm.priceVariesId != 1 && pricingPlanForm.pricingPlanTypeList.length == 0)" (click)="submitForm()">Add New Plan</button>
+        </div>
+
+        <div *ngIf="formMode == 'assignForm'">
+            <button class="btn btn-outline-orange" (click)="onUnassign()">Unassigned Plan</button>
+            <button class="btn btn-default" [disabled]="planForm.invalid || (pricingPlanForm.priceVariesId != 1 && pricingPlanForm.pricingPlanTypeList.length == 0)" (click)="submitForm()">Save</button>
+        </div>    
+    </div>    
+</div>

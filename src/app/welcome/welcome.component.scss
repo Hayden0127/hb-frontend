@@ -1,0 +1,63 @@
+.wp-header{
+    border: 0px solid #ccc; 
+    box-shadow: 0px 14px 15px rgba(183, 183, 183, 0.22);
+    border-radius: 8px; 
+    padding: 10px 30px;  
+    display: flex; 
+    justify-content: space-between; 
+    position: absolute; 
+    background-color: #fff;
+    width: 90%; left: 50%;
+    transform: translateX(-50%);
+    margin: 0px;
+}
+
+.logo-text-lg{
+    font-size: 16px; font-weight: 700; line-height: normal;
+}
+
+.logo-text-sm{
+    font-size: 13px; font-weight: 500; margin: 0px;
+}
+
+.wp-header-link{
+    margin: 10px 20px; font-size: 14px; font-weight: 700;color: #000000;
+}
+
+.wp-header-btn{
+    margin-left: 20px; font-size: 14px; padding: 0px 20px; color: #FF7E03; border-color: #FF7E03; line-height: 19px;
+}
+
+.wp-rs{
+    margin: 150px 0px 100px 100px; padding-right: 0px; padding-left: 100px;
+}
+
+.rs-text-lg{
+    color:#000000; font-weight: 900; font-size: 45px;
+}
+
+.rs-text.md{
+    color:#000000; font-size: 20px;
+}
+
+.tb-div{
+    height: 70px; position: absolute; bottom: 0%; width: 100%; text-align: center;
+    
+}
+
+.tb{
+    font-weight: 700; color: #000; font-size: 24px;
+}
+
+.fw400-fs12{
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.fs25-c{
+    font-size: 25px; color: #4D4E54;
+}
+
+.wp-b{
+    border-top: 1px solid #E9E9E9; padding-top: 30px; width: 80%;
+}

@@ -1,0 +1,119 @@
+.full-page {    
+    min-height: 80vh;
+    &.card-layout {
+        background-color: #ffffff;
+        border-radius: 10px;
+        min-height: 70vh;
+    }
+}
+
+.overlay-bg {
+    background-color: #ffffff;
+    box-shadow: 0px 4px 15px rgba(183, 183, 183, 0.3);
+    border-radius: 0px 10px 10px;
+}
+
+.step-number {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px;
+    padding: 0px;
+    gap: 10px;
+    width: 33px;
+    height: 33px;
+    text-align: center;
+    background: #FFFFFF;
+    border-radius: 50px;
+
+    &.card-layout {
+        background-color: #E9EDF2;
+    }
+
+    .number {
+        width: 10px;
+        height: 19px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 19px;
+        color: #506194;
+
+        &.card-layout {
+            color: #818285;
+        }
+    }
+}
+
+.step-title {
+    padding: 0px;
+    margin: 0px;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.step-description {
+    padding: 10px;
+    small {
+        font-weight: 500;
+        font-size: 11.67px;
+    }
+}
+
+.active-step {
+    background: #506194;
+    border-radius: 8px;
+
+    &.card-layout {
+        .step-number {
+            background-color: #ffffff;
+            .number {
+                color: #506194
+            }    
+        }    
+    }    
+
+    .step-description {
+        color: #ffffff;
+    }
+}
+
+.side {
+    width: 35%;
+}
+
+.nav-bottom {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px -4px 15px rgba(183, 183, 183, 0.25);
+    padding: 15px 25px;
+}
+
+.nav-btn {
+    width: 130px;
+    padding: 10px 15px;
+    font-weight: 700;
+    margin: 0px 5px;
+}
+
+.btn-confirm {
+    width: 200px;
+    padding: 10px 15px;
+    font-weight: 700;
+    color: #ffffff;
+    background: #00853B;
+
+    &:hover {
+        box-shadow: 0 8px 15px #3d53475e;
+        background-color: #025f2c;        
+    }
+}
+
+@media (max-width: 850px) {
+    .side {
+        width: 100%;
+    }
+}

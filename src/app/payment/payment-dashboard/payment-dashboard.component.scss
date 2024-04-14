@@ -1,0 +1,385 @@
+small {
+    font-size: 12px;
+}
+
+table {
+    border-spacing: 30px;
+}
+
+.blue
+{
+    color: #576798;
+}
+
+.green
+{
+    color: #2b9a5c;
+}
+
+.maroon
+{
+    color: #a73f40;
+}
+
+
+.stats-bar > div > div > div > p
+{
+    font-weight: 500;
+    font-size: 11.67px;
+    line-height: 16px;
+}
+
+.stats-bar > div > div > div >  h1
+{
+    font-weight: 700;
+    font-size: 16.8px;
+    line-height: 23px;
+}
+
+#totalItem
+{
+    margin: 0;
+    font-weight: 700;
+    font-size: 11.67px;
+    line-height: 16px;
+    text-align: center;
+    color: #506194;
+    padding-left: 8px;
+}
+
+#lastUpdate
+{
+    margin: 0;
+    font-weight: 500;
+    font-size: 10px;
+    text-align: right;
+    padding-right: 0;
+}
+
+#recentOrderTitle
+{
+    margin: 0;
+    font-weight: 700;
+    font-size: 16.8px;
+    line-height: 23px;
+    text-align: left;
+    color: #000000;
+}
+
+#recentOrderTable
+{
+    overflow-y: auto;
+    height: 37vh;
+}
+
+#transDetail
+{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    color: #393838;
+    margin-bottom: 10px;
+}
+
+.stats-bar > div > div > div
+{
+    border-radius: 10px;
+}
+
+.totalOrderStat
+{
+    text-align: left;
+}
+
+.totalOrderStat :hover
+{
+    background-color: #f0f2f7;
+}
+
+.totalOrderStat
+{
+    text-align: left;
+}
+
+.successPaymentStat
+{
+    text-align: left;
+}
+
+.successPaymentStat :hover
+{
+    background-color: #c2ffdd;
+}
+
+.failedPaymentStat
+{
+    text-align: left;
+}
+
+.failedPaymentStat :hover
+{
+    background-color: #ffe8e8;
+}
+
+.negativeStat
+{
+    margin-bottom: 0;
+    float: right;
+    position: relative;
+    padding: 2px 6px;
+    background-color: #ffe8e8;
+    color:#f48889;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.positiveStat
+{
+    margin-bottom: 0;
+    float: right;
+    position: relative;
+    padding: 2px 6px;
+    background-color: #c2ffdd;
+    color:#74dea3;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size:8px;
+}
+
+.transStatus
+{
+    width: fit-content;
+    font-size: 9px;
+    text-align: center;
+    margin-left: 12px;
+    margin-bottom: 15px;
+    border-radius: 40px;
+}
+
+.processingStatus
+{
+    background-color: #ffeede;
+    color: #b6712f;
+}
+
+.waitingStockStatus
+{
+    background-color: #ffe8e8;
+    color: #f06c6d;
+}
+
+.paidStatus
+{
+    background-color: #c2ffdd;
+    color: #18944f;
+}
+
+.pendingStatus
+{
+    background-color: #ffeede;
+    color: #ff9a3a;
+}
+
+.failedStatus
+{
+    background-color: #ffe8e8;
+    color:#f48889;
+}
+
+@media (max-width: 350px) {
+    #recentOrderTable
+    {
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    #totalOrderGraphCard{
+        height: auto !important;
+    }
+}
+
+@media (min-height: 1093px) {
+    #recentOrderTable
+    {
+        overflow-y: auto;
+        height: 40vh;
+    }
+
+    #transactionGraph
+    {
+        height: 30vh;
+    }
+}
+
+@media (max-width: 1210px) and (min-width: 758px) {
+
+    #transactionGraph
+    {
+        height: 22vh;
+    }
+
+    #recentOrderTable
+    {
+        height: 28vh;
+    }
+}
+
+#transAmount
+{
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: right;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f2f2f2; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dedede; 
+}
+
+.border-radius-20
+{
+    border-radius: 20px;
+}
+
+#paymentTransTable > table > thead > tr
+{
+    font-weight: 700;
+    font-size: 11.67px;
+    line-height: 16px;
+    color: #A7A7A7;
+    margin-top: 10px;
+    overflow: auto;
+}
+
+#paymentTransTable > thead > tr > th
+{
+    font-size: 11px;
+    font-weight: 700;
+    color: #A7A7A7;
+}
+
+#paymentCard{
+    border-radius: 20px;
+}
+
+#recentOrderCard{
+    height: 50vh;
+}
+
+#totalOrderGraphCard{
+    height: 50vh;
+}
+
+#paymentTransTable > tbody > tr > td > div > span
+{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #000000;
+}
+
+#paymentTransTable > tbody > tr > td > div > div
+{
+    font-weight: 400;
+    font-size: 11.67px;
+    line-height: 16px;
+    color: #656464;
+}
+
+#paymentTransTable
+{
+    //height: 100vh;
+    margin-top: 20px;
+}
+
+.table-wrapper {
+    height: 82vh;
+    overflow: auto;
+    display:inline-block;
+    width: 100%;
+}
+
+.font-500{
+    font-weight:500;
+}
+
+.btn-primary{
+    background: #506194;
+}
+
+.btn-outline-primary{
+    color: #506194;
+}
+
+.blue-label{
+    color: #261A9C !important;
+}
+
+.default-label{
+    font-size:14px;
+    font-weight: 400px;
+    color:#000000;
+}
+
+.success-badge {
+    display: inline-flex;
+    color: #05B052;
+    background: #C2FFDD;
+    border-radius: 50px;
+    line-height: auto;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.badge>i-feather{
+    width:10px;
+    height:10px;
+}
+
+.pending-badge {
+    display: inline-flex;
+    color: #FF7E03;
+    background: #FFEEDE;
+    border-radius: 50px;
+    line-height: auto;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.info-badge {
+    display: inline-flex;
+    color: #6254F0;
+    background: #f1f0ff;
+    border-radius: 50px;
+    line-height: auto;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.fail-badge {
+    display: inline-flex;
+    color: #E82526;
+    background: #FFEEDE;
+    border-radius: 50px;
+    line-height: auto;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.btn-outline-primary:hover{
+    background: #EFEFEF;
+    color: #506194;
+}
+
+.btn{
+    width:120px;
+}

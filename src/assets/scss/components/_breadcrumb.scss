@@ -1,0 +1,45 @@
+/*******************
+ Breadcrumb and page title
+*******************/
+
+.page-breadcrumb {
+    padding: 10px 0px;  
+    max-width: $page-wrapper-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    .page-title{
+        margin-bottom: 10px;
+        font-weight: $font-weight-medium;
+        font-size: 21px;        
+    }
+    .breadcrumb {
+        padding: 0px;
+        margin: 0px;
+        background: transparent;
+        font-size: 12px;
+        .breadcrumb-item+.breadcrumb-item::before {
+            content: "\e649";
+            font-family: themify;
+            color: $gray-400;
+            font-size: 11px;
+        }
+    }
+}
+
+.header-back{
+    border-radius: 30px;
+    border: none;
+    font-size: 12px;
+    font-weight: 400;
+    background: none;
+    padding: 4px 6px;
+    text-align: left;
+    color: #656464;
+}
+
+.header-back:hover {
+    cursor: pointer;
+    color: #000000;
+    text-decoration: underline;
+}
+

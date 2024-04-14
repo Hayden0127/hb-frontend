@@ -1,0 +1,54 @@
+.font-700{
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.font-400{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.bg-none {
+  background: none;
+}
+
+.card{
+  border-radius: 10px;
+}
+
+small {
+  font-size: 12px;
+}
+
+.circle {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right:5px;
+}
+.success-badge {
+  display: inline-flex;
+  color: black;
+  .circle {
+      background: #05B052;
+  }
+
+  &.status {
+      line-height: auto;
+      font-size: 10px;
+      background: #C2FFDD;
+      border-radius: 50px;
+  }
+}
+
+.selected {
+  // background-color: linear-gradient(100deg, #F4C073, #FADFB6);
+  background-image: linear-gradient(to right, #FADFB6, #F4C073);
+}
+
+.unselected {
+  background-color: white;
+}

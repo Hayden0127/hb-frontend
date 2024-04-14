@@ -1,0 +1,101 @@
+.container {
+    width: 95%
+}
+
+.banner {
+    background: #F0FBFF;
+    color: #0166A5;
+    font-size: 13px;
+
+    a {
+        color: #0166A5;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.card .plan {
+    padding: 30px;
+    background: #F8F8F8;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.plan-info {
+    background: #C8F5FA;
+    border-radius: 25px;
+    color: #006C78;
+    padding: 5px 18px;
+    font-size: 12px;
+    width: fit-content;
+}
+
+.muted-label {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #656464;
+    max-width: 250px;
+}
+
+.btn-default {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.plan-description {
+    color: #A7A7A7;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+table {
+    thead {
+        background: #F7F7F7;
+        font-size: 12px;
+        line-height: 16px;
+        color: #000000;
+        th {
+            font-weight: 700 !important;
+        }
+    }
+    tbody {
+        font-size: 12px;
+        line-height: 16px;
+        color: #000000;
+    }
+}
+
+::ng-deep div.modal-content {
+    border: none;
+    border-radius: 20px;
+    width: 450px;
+}
+
+.modal-container {
+    background: #ffffff;
+    border: none;
+    padding: 20px;
+    text-align: center;
+    border-radius: 100px !important; 
+
+    .circle-check {
+        width: 45px;
+        height: 45px;
+        background: #05B052;
+        border-radius: 50px;
+        position: relative;
+
+        i-feather {
+            color: #ffffff;
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            width: 25px
+        }
+    }
+}

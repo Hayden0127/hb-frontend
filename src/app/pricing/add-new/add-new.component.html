@@ -1,0 +1,203 @@
+<div class="container">
+    <div class="row"><a class="header-back" (click)="onBack()"><i-feather name="arrow-left" class="feather-sm mx-2"></i-feather>Back</a></div>
+    <div class="row mb-2">
+        <h3 class="py-1 px-4">Your Stay</h3>
+    </div>
+    <div class="card banner">
+        <div class="full-height">
+            <div class="container">
+                <div class="row mt-4">
+                    <div class="col mb-3">
+                        <h4 >Check In Date</h4>
+                        <h6>{{selectedRoom.checkInDate}}</h6>
+                        <h6>After 3.00pm</h6>
+                    </div>    
+        
+                    <div class="col mb-3">
+                        <h4 >Check Out Date</h4>
+                        <h6>{{selectedRoom.checkOutDate}}</h6>
+                        <h6>Before 12.00pm</h6>
+                    </div>  
+                </div>
+                <div class="row mb-3">
+                    <h6>{{selectedRoom.adult}} Adult, {{selectedRoom.children}} Childern</h6> 
+                </div>
+                <div class="row">
+                    <!-- <h4>Room Price <h6>(Included Taxes and Fees)</h6> </h4>
+                    <h4>RM{{selectedRoom.price}}</h4> -->
+                    <div class="col mb-3">
+                        <h4 >Room Price: </h4>
+                        <h6>(Included Taxes and Fees)</h6>
+                    </div>    
+        
+                    <div class="col mb-3">
+                        <h4 >RM{{selectedRoom.price}}</h4>
+                       
+                    </div> 
+                </div>
+            </div>  
+        </div>    
+    </div>
+    <div class="card mx-2 mt-2 p-3 banner">
+        <div class="d-flex">
+            <div class="col-9 my-auto">
+                <span class="align-bottom fw-bold">Please provide the following information. </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <h3 class="py-1 px-4">Guest Details</h3>
+    </div>
+    <div class="card grey">
+        <div class="full-height">
+            <div #planForm="ngForm" ngForm class="container">
+                <div class="row mt-4">
+                    <div class="col form-group mb-3">
+                        <label class="form-label" for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"  
+                        [class.is-invalid]="firstName.invalid && firstName.touched"
+                        [(ngModel)]="guestDetails.firstName" #firstName="ngModel" required>
+                        
+                        <div class="text-danger" *ngIf="firstName.invalid && firstName.touched">
+                            <small class="err-msg" *ngIf="firstName.errors?.required">First Name is required.</small>
+                        </div>
+                    </div>    
+        
+                    <div class="col form-group mb-3">
+                        <label class="form-label" for="priceVaries">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name"  
+                        [class.is-invalid]="lastName.invalid && lastName.touched"
+                        [(ngModel)]="guestDetails.lastName" #lastName="ngModel" required>
+                        
+                        <div class="text-danger" *ngIf="lastName.invalid && lastName.touched">
+                            <small class="err-msg" *ngIf="lastName.errors?.required">Last Name is required.</small>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col form-group mb-3">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number"  
+                        [class.is-invalid]="phone.invalid && phone.touched"
+                        [(ngModel)]="guestDetails.phone" #phone="ngModel" required>
+                        
+                        <div class="text-danger" *ngIf="phone.invalid && phone.touched">
+                            <small class="err-msg" *ngIf="phone.errors?.required">Phone number is required.</small>
+                        </div>
+                    </div>    
+        
+                    <div class="col form-group mb-3">
+                        <label class="form-label" for="priceVaries">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email"  
+                        [class.is-invalid]="email.invalid && email.touched"
+                        [(ngModel)]="guestDetails.email" #email="ngModel" required>
+                        
+                        <div class="text-danger" *ngIf="email.invalid && email.touched">
+                            <small class="err-msg" *ngIf="email.errors?.required">Email is required.</small>
+                        </div>
+                    </div>  
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" for="address">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Address"  
+                    [class.is-invalid]="address.invalid && address.touched"
+                    [(ngModel)]="guestDetails.address" #address="ngModel" required>
+                    
+                    <div class="text-danger" *ngIf="address.invalid && address.touched">
+                        <small class="err-msg" *ngIf="address.errors?.required">Address is required.</small>
+                    </div>
+                </div>  
+            </div>  
+        </div>    
+    </div>
+    <div class="row mb-2">
+        <h3 class="py-1 px-4">Payment Information</h3>
+    </div>
+    <div class="card grey">
+        <div class="full-height">
+            <div #planForm="ngForm" ngForm class="container mt-4">
+                <div class="form-group mb-3">
+                    <label class="form-label" for="cardNumber">Card Number</label>
+                    <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Card Number"  
+                    [class.is-invalid]="cardNumber.invalid && cardNumber.touched"
+                    [(ngModel)]="paymentDetails.cardNumber" #cardNumber="ngModel" required>
+                    
+                    <div class="text-danger" *ngIf="cardNumber.invalid && cardNumber.touched">
+                        <small class="err-msg" *ngIf="cardNumber.errors?.required">Card number is required.</small>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col form-group mb-3">
+                        <label class="form-label" for="expirationDate">Expiration Date</label>
+                        <input type="text" class="form-control" id="expirationDate" name="expirationDate" placeholder="Expiration Date (MM/YY)"  
+                        [class.is-invalid]="expirationDate.invalid && expirationDate.touched"
+                        [(ngModel)]="paymentDetails.expirationDate" #expirationDate="ngModel" required>
+                        
+                        <div class="text-danger" *ngIf="expirationDate.invalid && expirationDate.touched">
+                            <small class="err-msg" *ngIf="expirationDate.errors?.required">Expiration date is required.</small>
+                        </div>
+                    </div>    
+        
+                    <div class="col form-group mb-3">
+                        <label class="form-label" for="priceVaries">CVV</label>
+                        <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV"  
+                        [class.is-invalid]="cvv.invalid && cvv.touched"
+                        [(ngModel)]="paymentDetails.cvv" #cvv="ngModel" required>
+                        
+                        <div class="text-danger" *ngIf="cvv.invalid && cvv.touched">
+                            <small class="err-msg" *ngIf="cvv.errors?.required">CVV is required.</small>
+                        </div>
+                    </div>  
+                </div>
+                <div class="form-group mb-3">
+                    <label class="form-label" for="name">Name On Card</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name On Card"  
+                    [class.is-invalid]="name.invalid && name.touched"
+                    [(ngModel)]="paymentDetails.nameOnCard" #name="ngModel" required>
+                    
+                    <div class="text-danger" *ngIf="name.invalid && name.touched">
+                        <small class="err-msg" *ngIf="name.errors?.required">Name on card is required.</small>
+                    </div>
+                </div> 
+            </div>  
+        </div>    
+    </div>
+    <div class="d-flex ">
+        <div class="ms-auto">
+            <a href="javascript:void(0)" class="btn btn-default mt-4 me-2 w-100" (click)="makePayment()">Make Payment</a>
+        </div>
+      </div>     
+</div>
+
+<ng-template #successModal let-modal>
+    <div class="modal-header bg-light-success">
+        <h4 class="modal-title text-success" id="modal-success-title">{{'Success' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <p class="text-dark font-medium fs-4"><span class="text-success">{{successmsg}}</span></p>
+        <div class="row">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-success" (click)="redirectToViewMyBooking(); isAgree = false; isSelect = false">{{'Okay'
+                    | translate}}</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #alertModal let-modal>
+    <div class="modal-header bg-light-danger">
+        <h4 class="modal-title text-danger" id="modal-danger-title">{{'Error' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <p class="text-dark font-medium fs-4"><span class="text-danger">{{errormsg}}</span></p>
+        <div class="row">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-danger" (click)="closeBtnClick(); isAgree = false; isSelect = false">{{'Close' |
+                    translate}}</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<notifier-container></notifier-container>
+

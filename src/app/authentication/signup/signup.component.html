@@ -1,0 +1,165 @@
+<div id="signupform" style="margin: 50px;">
+    <div class="mb-3">
+        <h5 class="font-black font-700 font-size-20">{{'Sign up for your account' | translate}}</h5>
+        <span class="font-black">{{'Already have an account?' | translate}}</span> <a href="/authentication/login"
+            class="font-700 auth-link">{{'Log in' | translate}}</a>
+    </div>
+    <!-- Form -->
+    <div class="row">
+        <div class="col-12">
+            <form class="form-horizontal mt-3" id="registerform" #registerRequestForm="ngForm">
+                <div class="mb-3 row ">
+                    <label>{{'Email' | translate}}</label>
+                    <div class="col-12 ">
+                        <input class="form-control" type="text" placeholder="Key-in your email here" id="email"
+                            name="email" #email="ngModel" [(ngModel)]="registerRequest.email"
+                            [class.is-valid]="email.valid" [class.is-invalid]="email.touched && email.invalid"
+                            [pattern]="regexValidation.email" required>
+                        <div *ngIf="email.touched" class="text-danger">
+                            <small *ngIf="email.errors?.required">{{'Email is required.' | translate}}</small>
+                            <small class="err-msg" *ngIf="email.errors?.pattern">{{'Email format is incorrect.' |
+                                translate}}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <Label>{{'Full Name' | translate}}</Label>
+                    <div class="col-12 ">
+                        <input class="form-control" type="text" placeholder="Provide your full name here" id="fullName"
+                            name="fullName" #fullName="ngModel" [(ngModel)]="registerRequest.fullName"
+                            [class.is-valid]="fullName.valid" [class.is-invalid]="fullName.touched && fullName.invalid"
+                            required>
+                        <div *ngIf="fullName.touched" class="text-danger">
+                            <small *ngIf="fullName.errors?.required">{{'Full Name is required.' | translate}}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label>Password</label>
+                    <div class="col-12 ">
+                        <div class="input-group">
+                            <input class="form-control" [type]="hide ? 'password' : 'text'"
+                                placeholder="Set your own password here" id="password" name="password"
+                                #password="ngModel" [(ngModel)]="registerRequest.password"
+                                [class.is-valid]="password.valid"
+                                [class.is-invalid]="password.touched && password.invalid"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" required>
+                            <span class=" input-group-text">
+                                <i-feather name="eye-off" class="hide-icon" id="togglePassword"
+                                    (click)="hide = !hide" *ngIf="hide">
+                                </i-feather>
+                                <i-feather name="eye" class="hide-icon" id="togglePassword" (click)="hide = !hide"
+                                    *ngIf="!hide">
+                                </i-feather>
+                            </span>
+                        </div>
+                        <div *ngIf="password.touched || password.errors?.pattern" class="text-danger">
+                            <small *ngIf="password.errors?.required">{{'Password is required.' | translate}}</small>
+                            <small *ngIf="password.errors?.pattern">{{'Password is not strong enough.' |
+                                translate}}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <Label>{{'Re-Type Password' | translate}}</Label>
+                    <div class="col-12 ">
+                        <div class="input-group">
+                            <input class="form-control" type="password" placeholder="Re-type your password"
+                                id="confirmPassword" name="confirmPassword" [type]="hide ? 'password' : 'text'"
+                                class="form-control" #confirmPassword="ngModel"
+                                [class.is-valid]="isPasswordAndConfirmSame && confirmPassword.valid "
+                                [class.is-invalid]="confirmPassword.touched && confirmPassword.invalid || !isPasswordAndConfirmSame"
+                                [(ngModel)]="registerRequest.confirmPassword" required
+                                (change)="changeConfirmPassword()" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$">
+                            <span class="input-group-text">
+                                <i-feather name="eye-off" class="hide-icon" id="togglePassword"
+                                    (click)="hide = !hide" *ngIf="hide">
+                                </i-feather>
+                                <i-feather name="eye" class="hide-icon"  id="togglePassword" (click)="hide = !hide"
+                                    *ngIf="!hide">
+                                </i-feather>
+                            </span>
+                        </div>
+                        <div *ngIf="confirmPassword.touched" class="text-danger">
+                            <small *ngIf="confirmPassword.errors?.required">{{'Confirm Password is required.' |
+                                translate}}</small>
+                            <div *ngIf="!isPasswordAndConfirmSame" class="text-danger">
+                                <small>{{'Password does not match.' | translate}}</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col-md-12 ">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" [(ngModel)]="isAgree" name="termCheckBox"
+                                id="termCheckBox">
+                            <label class="form-check-label fs-4" for="customCheck1">Accept <a
+                                    href="javascript:void(0)">Terms</a> and <a
+                                    href="javascript:void(0)">Conditions</a>.</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 text-center ">
+                    <div class="col-xs-12 mb-4">
+                        <button class="btn d-block w-100 btn-default"
+                            [disabled]="!isAgree || isSelect || registerRequestForm.invalid||!registerRequestForm.dirty"
+                            (click)="onRegister(); isSelect = true">
+                            <div class="spinner mt-0 mb-0" style="height:30px; width:30px;" *ngIf="isSelect">
+                                <div class=" double-bounce1"></div>
+                                <div class="double-bounce2"></div>
+                            </div>
+                            <span class="" *ngIf="!isSelect">{{'Sign Up' | translate}}</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <span>{{'Log in using :' | translate}}</span>
+                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+                        <div class="social">
+                            <a href="javascript:void(0)" class="btn btn-outline-social me-2" data-toggle="tooltip"
+                                title="" data-original-title="Login with Google"> <i aria-hidden="true"
+                                    class="fab fa-google me-1" style="color: #DB4437; "></i> Google</a>
+                            <a href="javascript:void(0)" class="btn btn-outline-social me-2" data-toggle="tooltip"
+                                title="" data-original-title="Login with Facebook" s> <i aria-hidden="true"
+                                    class="fab fa-facebook me-1" style="color: #3b5998 ; "></i> Facebook </a>
+                            <a href="javascript:void(0)" class="btn btn-outline-social" data-toggle="tooltip" title=""
+                                data-original-title="Login with LinkedIn"> <i aria-hidden="true"
+                                    class="fab fa-linkedin me-1" style="color: #0072b1; "></i> LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<ng-template #alertModal let-modal>
+    <div class="modal-header bg-light-danger">
+        <h4 class="modal-title text-danger" id="modal-danger-title">{{'Error' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <p class="text-dark font-medium fs-4"><span class="text-danger">{{errormsg}}</span></p>
+        <div class="row">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-danger" (click)="closeBtnClick(); isAgree = false; isSelect = false">{{'Close' |
+                    translate}}</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #successModal let-modal>
+    <div class="modal-header bg-light-success">
+        <h4 class="modal-title text-success" id="modal-success-title">{{'Success' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+        <p class="text-dark font-medium fs-4"><span class="text-success">{{successmsg}}</span></p>
+        <div class="row">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-success" (click)="redirectToLogin(); isAgree = false; isSelect = false">{{'Okay'
+                    | translate}}</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

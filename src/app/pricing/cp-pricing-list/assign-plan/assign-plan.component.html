@@ -1,0 +1,111 @@
+<div class="row mb-3">
+    <a class="d-flex align-items-center header-back link" (click)="onBack()"><img width="20px" src="assets/icons/arrow_back.svg" alt=""> <p class="m-0 mx-2">Back to see all pricing</p></a>  
+    <h3 class="py-1">{{ title | translate }}</h3>
+</div>
+
+<div class="container">
+    <div class="card mt-2 p-3 banner">
+        <div class="d-flex">
+            <div class="col-9 my-auto">
+                <span class="align-bottom">Please choose any plan below by clicking on any of the available item. </span>
+            </div>
+            <div class="ms-auto">
+                <a class="fw-bold">See all Pricing Plan</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4 card" *ngFor="let pp of pricingPlanList">
+            <div class="plan">
+                <div class="mb-3">
+                    <p class="h3 m-0 mb-1 text-black">{{ pp.planName }}</p>
+                    <span class="d-flex justify-content-center">
+                        <small class="muted-label">{{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' }}</small>    
+                    </span>
+                </div>
+
+                <span class="d-flex justify-content-center mb-2">
+                    <small class="muted-label me-2">Fixed fee</small>
+                    <p class="h2 text-black">{{ pp.fixedFee | number: '1.4' }}</p>
+                </span>
+
+                <div class="d-flex justify-content-center mb-3">
+                    <span class="plan-info">
+                        <span class="m-0 p-0 fw-bold me-3">Price Varies</span>
+                        <span class="m-0 p-0">{{ pp.priceVaries }}</span>
+                    </span>    
+                </div>
+
+                <button class="btn btn-default w-100 text-center" (click)="assignPlan(pp)" [disabled]="clicked">Select</button>
+            </div>
+
+            <div class="p-2">
+                <span class="plan-description fw-bold">Plan Description</span>
+                <table class="table mt-2">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Charge</th>
+                            <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ppt of pp.pricingPlanTypeList">
+                            <td>{{ ppt.productTypeName }}</td>
+                            <td>{{ ppt.priceRate | number: '1.4' }}</td>
+                            <td>{{ ppt.unitName }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #successResponseModal let-modal>
+    <div class="modal-container">
+        <div class="d-flex justify-content-center my-3">
+            <div class="circle-check">
+                <i-feather name="check"></i-feather>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <p class="h3 m-0 mb-1 text-black">Successfully Assigned</p>
+            <span class="d-flex justify-content-center">
+                <small class="text-black">The following plan have been assign to {{ responseModal.chargingPoint.name }}.</small>    
+            </span>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <div class="card w-75">
+                <div class="card-body plan">
+                    <div class="mb-3">
+                        <p class="h3 m-0 mb-1 text-black">{{ responseModal.pricingPlan.planName }}</p>
+                        <span class="d-flex justify-content-center">
+                            <!-- <small class="muted-label">{{ 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' }}</small>     -->
+                        </span>
+                    </div>
+        
+                    <span class="d-flex justify-content-center mb-2">
+                        <small class="muted-label me-2">Fixed fee</small>
+                        <p class="h2 text-black">{{ responseModal.pricingPlan.fixedFee  | number: '1.4' }}</p>
+                    </span>
+        
+                    <div class="d-flex justify-content-center">
+                        <span class="plan-info">
+                            <span class="m-0 p-0 fw-bold me-3">Price Varies</span>
+                            <span class="m-0 p-0">{{ responseModal.pricingPlan.priceVaries }}</span>
+                        </span>    
+                    </div>
+                </div>    
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center my-2">
+            <button class="btn btn-default w-75 mb-3" (click)="modalService.dismissAll()">Done</button>
+        </div>
+
+    </div>
+</ng-template>

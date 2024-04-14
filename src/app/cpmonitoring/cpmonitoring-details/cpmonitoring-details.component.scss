@@ -1,0 +1,167 @@
+.power-utilization{
+    box-shadow:-4px 0 8px -4px rgba(197, 201, 205, 0.751);
+}
+
+.full-page {    
+    min-height: 80vh;
+    &.card-layout {
+        background-color: #ffffff;
+        border-radius: 10px;
+        min-height: 70vh;
+    }
+}
+
+.font600{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color:black;
+}
+
+.card-info{
+    background:#F0F2F7 !important;
+}
+
+.text-info{
+    color: #506194;
+    font-weight:600;
+    text-align: center;
+}
+
+.card-success{
+    background: #C2FFDD !important;
+}
+
+.text-success{
+    color: #05B052;
+    font-weight:600;
+    text-align: center;
+}
+
+.card-warning{
+    background:#FFEEDE !important;
+}
+
+.text-warning{
+    color:#FF7E03 ;
+    font-weight:600;
+    text-align: center;
+}
+
+.bg-info{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+thead{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    color: #A7A7A7;
+}
+
+td{
+    font-size: 14px;
+}
+
+.badge{
+    border-radius:40px;
+    padding: 6px 10px;
+}
+
+.text-error{
+    color:#E82526;
+}
+
+.badge{
+    font-size: 10px;
+}
+
+.badge-success{
+    background: #C2FFDD;
+    color: #05B052;
+}
+
+.badge-in-progress{
+    background: #E9EDF2;
+    color: #818285;
+}
+
+.bg-critical{
+    background: #EA5B5C;
+}
+
+.bg-high{
+    background: #A35102;
+}
+
+.bg-medium{
+    background: #FF7E03;
+}
+
+.bg-minor{
+    background: #6254F0;
+}
+
+.bg-unknown{
+    background: #ABADB1;
+}
+
+.text-summary{
+    color: #506194 !important;
+}
+
+small{
+    font-size: 0.6em;
+}
+
+agm-map{
+    height:100%;
+}
+
+.back-button{
+    position: absolute;
+    z-index: 10;
+    top: 8px;
+    left: 6px;
+    border-radius: 30px;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    background: white;
+    padding: 4px 6px;
+    text-align: center;
+    color: #6254F0;
+}
+
+button>i-feather{
+    font-size: 10px;
+    padding-right: 4px;
+}
+
+@media (max-width: 850px) {
+    button{
+        width: 100px;
+        top: 12px !important;
+    }
+
+    button>span{
+        word-wrap: normal;
+    }
+
+    .power-card{
+        padding: 5px 0;
+    }
+
+    .power-card .card-body{
+        padding: 0 20px !important;
+    }
+}
+
+.power-card{
+    padding-left: 6px !important;
+}
+
+
+

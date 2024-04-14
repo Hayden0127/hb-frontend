@@ -1,0 +1,77 @@
+.nav-bottom {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px -4px 15px rgba(183, 183, 183, 0.25);
+    padding: 15px 25px;
+    &.card-layout {
+        border-radius: 0px 0px 10px 0px;
+    }
+}
+
+.nav-btn {
+    width: 130px;
+    padding: 10px 15px;
+    font-weight: 700;
+    margin: 0px 5px;
+}
+
+.btn-confirm {
+    width: 200px;
+    padding: 10px 15px;
+    font-weight: 700;
+    color: #ffffff;
+    background: #00853B;
+
+    &:hover {
+        box-shadow: 0 8px 15px #3d53475e;
+        background-color: #025f2c;        
+    }
+}
+
+.container {
+    margin-bottom: 50px;
+}
+
+.card-label {
+    background: #F0F2F7;
+    padding: 8px 10px;
+    border-left: 3px solid #506194;
+    margin-bottom: 15px;
+    .label {
+        font-weight: 700;
+        font-size: 14px;
+        color: #818285;
+        margin: 0px;
+    } 
+    .value {
+        font-size: 15px;
+        margin-top: 5px;
+    }
+}
+
+.badge-flex-box {
+    margin-top: 5px;
+    flex-direction: wrap;
+    align-items: center;
+    max-width: 100%;
+    white-space: initial;
+
+    .badge {
+        margin: 5px 0px;
+        margin-right:5px;
+        font-size: 13px;
+        font-weight: 600;
+        background: #C8F5FA;
+        border-radius: 4px;
+        padding: 5px 8px;
+        color: #006C78;
+    }
+}
+
+agm-map{
+    height: 200px;
+    width:100%;
+}

@@ -1,0 +1,77 @@
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center col-12">
+    <div class="auth-box on-sidebar m-md-0 col-4">
+        <div class="mt-1 mb-0 mx-2 auth-header">
+            <div>
+                <a class="auth-header-logo" href="/welcome">
+                <img width="40px" height="40px" src = "assets/icons/coconut.svg" class="mx-2"/>
+                <span><span class="logo-text-lg" >The Beverly Hills Hotel</span><p class="logo-text-sm">The Beverly Hills Hotel Booking System</p></span>
+                </a>
+            </div>
+            <div class="auth-header-lang px-5" >
+                <ul class="auth-lang-list">
+                    <li class="nav-item dropdown" ngbDropdown placement="bottom-start">
+                        <a
+                          ngbDropdownToggle
+                          class="dropdown-toggle"
+                          href="javascript:void(0)"
+                          id="navbarDropdown"
+                          role="button"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                          style="color: #000"
+                        >
+                          <i class="flag-icon flag-icon-{{ selectedLanguage.icon }}"></i> {{selectedLanguage.type}}
+                        </a>
+                        <div
+                          class="dropdown-menu dropdown-menu-right"
+                          aria-labelledby="navbarDropdown"
+                          ngbDropdownMenu
+                        >
+                          <span
+                            class="dropdown-item"
+                            href="#"
+                            *ngFor="let lang of languages"
+                            (click)="changeLanguage(lang)"
+                          >
+                            <i class="flag-icon flag-icon-{{ lang.icon }}"></i>
+                            <span
+                              >{{ lang.language }}
+                              <span *ngIf="lang.type">({{ lang.type }})</span>
+                            </span>
+                          </span>
+                        </div>
+                      </li>
+                </ul>
+            </div> 
+        </div>
+        <!--form-->
+        <div class="mb-3">
+            <router-outlet (activate)="onActivate($event)"></router-outlet>
+        </div>
+    </div> 
+    
+    <div class=" col-6">
+        <!-- <p class="font-size-20 font-700 desc-title">{{'Unique Solution for Charging Stations' | translate}}</p>
+        <p class="desc-content">{{'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur posuere metus, non pretium leo sollicitudin id. Proin facilisis blandit nisl in vestibulum. Aenean porttitor, massa vel pulvinar imperdiet, felis nulla blandit risus, in aliquam lacus dui eget odio. Cras non ullamcorper magna.' | translate}}</p>
+        <button class="btn btn-default nav-btn">{{'Learn More' | translate}}</button>
+        <button class="btn btn-outline-default nav-btn bg-white" (click)="redirectScheduleInstall()">{{'Schedule Install' | translate}}</button>
+        <br> -->
+        <img  class="auth-img" src="/assets/images/beverly.jpg" />
+    </div>
+</div>
+
+
+<ng-template #alertModal let-modal>
+    <div class="modal-header bg-light-danger">
+      <h4 class="modal-title text-danger" id="modal-danger-title">{{'Error' | translate}}</h4>
+    </div>
+    <div class="modal-body">
+      <p class="text-dark font-medium fs-4"><span class="text-danger">{{errormsg}}</span></p>
+      <div class="row">
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-danger" (click)="closeBtnClick(); isAgree = false; isSelect = false">{{'Close' | translate}}</button>
+        </div>
+      </div>
+    </div>
+</ng-template>

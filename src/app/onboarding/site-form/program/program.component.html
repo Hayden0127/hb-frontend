@@ -1,0 +1,43 @@
+
+<div class="d-flex justify-content-center my-5">
+    <div #programForm="ngForm" ngForm class="container w-75">
+        <div class="text-center mt-5 pt-2">
+            <img width="100px" src="assets/images/maintenance.png" alt="">
+
+            <div class="p-4">
+                <p class="h3 fw-bold">Maintenance Program</p>
+                <small class="">You can select any available maintenance program for your charging point.</small>
+            </div>                        
+        </div>  
+
+        <div class="form-group mb-3">
+            <label class="form-label required" for="program">Select Maintenance Program</label>
+            <select name="program" id="program" class="form-select" [class.is-invalid]="program.invalid && program.touched"
+                [class.text-muted]="programDetails.maintenanceProgram == null"
+                [(ngModel)]="programDetails.maintenanceProgram" #program="ngModel" required>
+                <option hidden selected [value]="null">Please select</option>
+                <option class="text-dark" *ngFor="let mp of maintenanceProgram" [value]="mp">{{ mp }}</option>
+            </select>
+
+            <div class="text-danger" *ngIf="program.invalid && program.touched">
+                <small class="err-msg" *ngIf="program.errors?.required">Maintenance Program is required.</small>
+            </div>
+
+        </div>
+        
+        <div class="form-group mb-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea type="text" class="form-control" id="description" name="description" placeholder="Key-in the remarks here"  [(ngModel)]="programDetails.description"></textarea>
+        </div>
+    </div>
+</div>
+
+<div class="nav-bottom d-flex" [class.card-layout]="viewMode == 'new-site'">
+    <div class="ms-auto">
+        <button class="btn btn-outline-default nav-btn" (click)="back()">Back</button>
+        <button class="btn btn-default nav-btn" (click)="next()" [disabled]="programForm.invalid">
+            <span *ngIf="viewMode == 'letsgo'">Continue</span>
+            <span *ngIf="viewMode == 'new-site'">Next</span>
+        </button>
+    </div>
+</div>

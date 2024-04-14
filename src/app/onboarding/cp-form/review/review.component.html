@@ -1,0 +1,101 @@
+<div class="container p-4">
+    <p class="h3 fw-bold">Review and Confirm</p>
+    <small class="">Please review and confirm the following information and click Finish button.</small>
+
+    <div class="d-flex my-3">
+        <agm-map [latitude]="marker.latitude" [longitude]="marker.longitude" [zoom]="zoom" [disableDefaultUI]="true"
+            [streetViewControl]="false" (mapReady)="mapReady($event)">
+            <agm-marker [latitude]="marker.latitude" [longitude]="marker.longitude" 
+                [label]="marker.label" [markerDraggable]="marker.draggable" 
+                [iconUrl]="{
+                    url: markerIconUrl.red,
+                    scaledSize: {
+                      width: 30,
+                      height: 50
+                    }
+                  }">
+            </agm-marker>
+        </agm-map>
+    </div>
+    
+    <div class="d-flex align-items-center">
+        <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_37_796)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.56215 19.3144C7.95734 19.3144 15.0186 11.7698 15.0186 7.65175C15.0186 3.53367 11.6802 0.195312 7.56215 0.195312C3.44407 0.195312 0.105713 3.53367 0.105713 7.65175C0.105713 11.7698 7.16697 19.3144 7.56215 19.3144ZM7.56216 11.3812C9.65003 11.3812 11.3426 9.68863 11.3426 7.60076C11.3426 5.51289 9.65003 3.82034 7.56216 3.82034C5.4743 3.82034 3.78175 5.51289 3.78175 7.60076C3.78175 9.68863 5.4743 11.3812 7.56216 11.3812Z" fill="#CECFF4"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.105713 7.65175C0.105713 11.7698 7.16697 19.3144 7.56215 19.3144V11.3812C5.47429 11.3811 3.78175 9.68862 3.78175 7.60076C3.78175 5.5129 5.47429 3.82035 7.56215 3.82034V0.195312C3.44407 0.195312 0.105713 3.53367 0.105713 7.65175Z" fill="#E6EAFF"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_37_796">
+            <rect width="16" height="20" fill="white"/>
+            </clipPath>
+            </defs>
+        </svg>   
+        <span class="mx-2">{{ displayFormData.siteDetails.address }}</span> 
+    </div>  
+    
+    <div class="my-4">
+        <div class="row m-0">
+            <div class="col me-3" style="min-width: 275px">
+                <div class="row card-label">
+                    <span class="label">Person-In-Charge</span>    
+                    <span class="value">{{ displayFormData.siteDetails.personInCharge }}</span>            
+                </div>
+                <div class="row card-label">
+                    <span class="label">Site Name</span>  
+                    <span class="value">{{ displayFormData.siteDetails.siteName }}</span>                          
+                </div>
+                <div class="row card-label">
+                    <span class="label">Email</span>    
+                    <span class="value">{{ displayFormData.siteDetails.email }}</span>             
+                </div>
+            </div>
+            <div class="col me-3" style="min-width: 175px">
+                <div class="row card-label">
+                    <span class="label">Office No.</span>        
+                    <span class="value">{{ displayFormData.siteDetails.officeNo }}</span>            
+                </div>
+                <div class="row card-label">
+                    <span class="label">Mobile Phone No.</span>  
+                    <span class="value">{{ displayFormData.siteDetails.mobileNo }}</span>                  
+                </div>
+            </div>
+            <div class="col" style="min-width: 250px">
+                <div class="row card-label">
+                    <span class="label">Connector Details</span>    
+                    <span class="badge-flex-box">      
+                        <span class="badge" *ngFor="let c of displayFormData.cpConnectorList; let i = index">
+                            {{ c.name }} - {{ c.productType }}
+                        </span>      
+                    </span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="row m-0">
+            <div class="col" style="min-width: 275px">
+                <div class="row card-label">
+                    <span class="label">Maintenance Program</span>    
+                    <span class="value mb-3">{{ displayFormData.siteDetails.maintenanceProgram }}</span>  
+                    
+                    <span class="label">Description</span>        
+                    <span class="value">{{ displayFormData.siteDetails.description }}</span>  
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<div class="nav-bottom d-flex">
+    <div class="ms-auto">
+        <button class="btn btn-outline-default nav-btn" (click)="back()">Back</button>
+        <button class="btn nav-btn btn-confirm" (click)="confirm()" [disabled]="clicked">
+            <div class="spinner clicked" *ngIf="clicked">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <span [hidden]="clicked">Confirm and Finish</span> 
+        </button>
+    </div>
+</div>
+
+<notifier-container></notifier-container>

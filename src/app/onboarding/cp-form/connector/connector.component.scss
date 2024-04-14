@@ -1,0 +1,85 @@
+.nav-bottom {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px -4px 15px rgba(183, 183, 183, 0.25);
+    padding: 15px 25px;
+
+    &.card-layout {
+        border-radius: 0px 0px 10px 0px;
+    }
+}
+
+.nav-btn {
+    width: 130px;
+    padding: 10px 15px;
+    font-weight: 700;
+    margin: 0px 5px;
+}
+
+.table-responsive {
+    max-height: 275px;
+    margin-bottom: 90px;
+}
+
+.btn-plus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 33px;
+    width: 33px;
+    padding: 0px;
+    border-radius: 50%;
+
+    i-feather {
+        width: 15px;
+        height: 25px;
+        line-height: 25px;
+        padding-bottom: 2px;
+    }
+}
+
+.pointer {
+    cursor: pointer;
+
+    &:hover > i-feather {
+        color: #000000
+    }
+}   
+
+.form-label {
+    font-weight: 700;
+    font-size: 14px;
+    color: #818285;
+    margin: 5px;
+} 
+
+.form-control, .form-select {
+    font-size: 15px;
+}
+
+.err-msg {
+    font-size: 13px;
+}
+
+.table-header {
+    font-size: 16px;
+    background-color: #ffffff;
+    position: sticky;
+    top: 0
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f2f2f2; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dedede; 
+}

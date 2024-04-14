@@ -1,0 +1,76 @@
+agm-map{
+    height:100%;
+    width: 100%;
+}
+
+.card-search-location {
+  transform-origin: bottom;
+  transition: transform 0.4s ease-in-out;
+  background: #FFFFFF;
+  border: 1px solid #D1D1D1;
+  box-shadow: 0px 4px 8px rgba(134, 134, 134, 0.15);
+  border-radius: 12px;
+  position: absolute;
+  z-index: 10;
+  width: 72.5%;
+  margin-left:12px;
+}
+
+.nav-btn {
+  margin: 0;
+  width: 100%;
+  padding: 8px;
+  font-weight: 700;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.card-body-2 {
+  flex: 1 1 auto;
+  padding: 0rem;
+}
+
+.card {
+  margin-top: 25px;
+}
+
+.form-group>i{
+  background-color: white;
+  position: absolute;
+  top: 5px;
+  right: 2px;
+  z-index: 10;
+  font-size:18px;
+  color: #ABADB1;
+  padding-left: 10px;
+}
+
+.form-group>input{
+  padding-right: 2em !important;
+}
+
+.font-700{
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.font-400{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.form-control{
+  font-size:14px;
+}
+
+.card-body{
+  padding: 10px 15px;
+  font-size: 14px;
+}
+
+.marker-info{
+  margin-bottom: 5px; 
+  max-width: 235px;
+}

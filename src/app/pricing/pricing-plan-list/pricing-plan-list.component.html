@@ -1,0 +1,171 @@
+
+<div [ngClass]="isEditMode ? 'col-10':'col'">
+    <div class="row"><a class="header-back" (click)="onBack()"><i-feather name="arrow-left" class="feather-sm mx-2"></i-feather>Back To previous</a></div>
+    <div class="row mb-2">
+        <h3 class="py-1 px-4">Pricing Plan List</h3>
+    </div>
+    
+        <div class="card mt-2 p-3 banner">
+            <div class="d-flex">
+                <div class="col-9 my-auto">
+                    <span class="align-bottom">Please click Add New Plan button to add a new pricing plan.</span>
+                </div>
+                <div class="ms-auto">
+                    <button class="btn btn-default mt-0 text-end" (click)="addPricingPlan()">Add New Plan<i-feather name="plus"
+                            class="plus-icon"></i-feather></button>
+                </div>
+            </div>
+        </div>
+        <div class="card search-bar">
+            <div class="row card-body">
+                <div class="col-3">
+                    <label class="form-label" for="searchPlanName">Search by</label>
+                    <div class="form-group input-group mb-1">
+                        <i-feather class="feather-sm text-muted" name="search"></i-feather>
+                        <input type="text" class="form-control" id="searchPlanName" name="searchPlanName"
+                            [(ngModel)]="searchRequest.searchPlanName" placeholder="Please key in plan name here">
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="form-group mb-1">
+                        <label class="form-label" for="fixedFee">Fixed Fee</label>
+                        <input type="text" class="form-control" id="fixedFee" name="fixedFee"
+                            [(ngModel)]="searchRequest.searchFixedFee" placeholder="Please key in fixed fee here">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group mb-1">
+                        <label class="form-label" for="chargerType">Charger Type</label>
+                        <select name="chargerType" id="chargerType" class="form-select bg-white"
+                            [(ngModel)]="searchRequest.searchProductTypeId">
+                            <option selected class="text-dark" [value]="0">All Type</option>
+                            <option class="text-dark" *ngFor="let type of productTypeList" [value]="type.id">{{ type.name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group mb-1">
+                        <label class="form-label" for="unit">Unit</label>
+                        <select name="unit" id="unit" class="form-select bg-white" [(ngModel)]="searchRequest.searchUnitId">
+                            <option selected class="text-dark" [value]="0">All Unit</option>
+                            <option class="text-dark" *ngFor="let unit of unitList" [value]="unit.id">{{ unit.name }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group text-end">
+                        <button class="btn btn-default me-2 form-control fw-bold"
+                            (click)="loadPricingPlanList()">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card table-default">
+            <div class="table-responsive">
+                <table class="table table-borderless card-body p-0">
+                    <thead>
+                        <tr>
+                            <th width="280px" sortable="planName" (sort)="onSort($event)"><small class="fw-bold">Charge Point</small></th>
+                            <th sortable="priceVaries" (sort)="onSort($event)"><small class="text-center fw-bold">Price Varies</small></th>
+                            <th sortable="unit" (sort)="onSort($event)"><small class="text-center fw-bold">Unit</small></th>
+                            <th sortable="fixedFee" (sort)="onSort($event)"><small class="text-center fw-bold">Fixed Fee</small></th>
+                            <th sortable="createdOn" (sort)="onSort($event)"><small class="fw-bold">Created On</small></th>
+                            <th sortable="modifiedOn" (sort)="onSort($event)"><small class="fw-bold">Modified On</small></th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        <tr *ngIf="pricingPlanList.length == 0">
+                            <td colspan="6" height="150px" class="">
+                                <span class="d-flex align-items-center justify-content-center text-muted h-100">No Records
+                                    Found.</span>
+                            </td>
+                        </tr>
+                        <tr class="border-bottom" *ngFor="let plan of pricingPlanList" [class.selected-row]="this.isEditMode == true && plan.id == this.selectedPlan.id"
+                        [class.disabled-row]="this.isEditMode == true && plan.id != this.selectedPlan.id">
+                            <td>
+                                <div class="d-flex">
+                                    <div>
+                                        <span class="d-flex default-label fw-bold">{{plan.planName}}</span>
+                                        <small class="d-flex mb-1 muted-label"><span class="fw-bold">Charge Type:
+                                            </span><span class="mx-1">{{plan.productTypes || '-'}}</span></small>
+                                    </div>
+                                    <div class="ms-auto" ngbDropdown #actionDropDown="ngbDropdown" id="actionDropDown"
+                                    *ngIf="this.isEditMode != true || (this.isEditMode == true && plan.id != this.selectedPlan.id)">
+                                        <button class="btn btn-sm text-center" id="actionDropDown" ngbDropdownToggle>
+                                            <i-feather name="more-vertical" class="more-icon"></i-feather>
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="actionDropDown">
+                                            <button class="dropdown-item pointer text-dark" (click)="editPricingPlan(plan)">Edit</button>
+                                            <button class="dropdown-item warning-label pointer"
+                                                (click)="showDeleteConfirmation(plan)">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{plan.priceVaries || '-'}}</td>
+                            <td>{{plan.units || '-'}}</td>
+                            <td>{{plan.fixedFee | number:'1.4'}}</td>
+                            <td>{{plan.createdOn | date: 'dd MMM yyyy'}}<small class="d-flex muted-label">{{plan.createdOn |
+                                    date: 'HH:mm a'}}</small></td>
+                            <td>
+                                <span *ngIf="plan.modifiedOn != null && plan.modifiedOn != ''">{{plan.modifiedOn | date: 'dd MMM yyyy'}}<small class="d-flex muted-label">{{plan.modifiedOn |
+                                date: 'HH:mm a'}}</small></span>
+                                <span *ngIf="plan.modifiedOn == null || plan.modifiedOn == ''">-</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <app-pagination-footer [pageSize]="pageSize" [hasNext]="pagedPricingPlanList.hasNext"
+            [hasPrevious]="pagedPricingPlanList.hasPrevious" [currentPage]="page"
+            [totalCount]="pagedPricingPlanList.totalCount" (changed)="loadPricingPlanList($event)"></app-pagination-footer>
+</div>   
+
+<div *ngIf="isEditMode" class="edit-container col-2" [@editContainerTrigger]="isEditMode">
+    <div class="d-flex pt-3 px-3 mb-2 shadow-bottom">
+        <div class="col">
+            <span class="text-muted"><small>Edit Pricing Plan</small></span>
+            <h4 class="mb-3">{{this.selectedPlan.planName}}</h4>
+        </div>
+        <div class="ms-auto text-end">
+            <button class="btn close px-0 text-muted mt-1 pointer" type="button" aria-label="close" (click)="closeEditPanel()">
+                <i-feather name="x" class="feather-sm"></i-feather>
+            </button>
+        </div>
+    </div>
+    <app-pricing-plan-form 
+        class="p-0 m-0"
+        [formMode]="'editForm'" 
+        [pricingPlanForm]="pricingPlanForm"
+        (submitFormValue)="submitForm($event)"
+        (closeForm)="closeEditPanel($event)">
+    </app-pricing-plan-form>   
+</div>
+
+<notifier-container></notifier-container>
+
+<ng-template #editModal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title text-dark" id="modal-danger-title">Test</h4>
+      <button class="btn text-danger close" type="button" aria-label="close" (click)="closeBtnClick()">
+        <i-feather name="x"></i-feather>
+    </button>
+    </div>
+    <div class="modal-body">
+      <p class="text-dark font-medium fs-4"><span class="text-dark">Form</span></p>
+      <div class="row">
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-danger" (click)="closeBtnClick()">Proceed</button>
+        </div>
+      </div>
+    </div>
+</ng-template>
+
+<ng-template #deleteToast let-modal>
+    <app-toast [data]="this.toastDetail" (closeToastAction)="closeToastAction($event)"
+        (onProceedAction)="onConfirmDeletePricingPlan($event)"></app-toast>
+</ng-template>
