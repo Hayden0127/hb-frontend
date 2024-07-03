@@ -290,106 +290,10 @@ small {
 }
 
 .selected {
+    // background-color: linear-gradient(100deg, #F4C073, #FADFB6);
     background-image: linear-gradient(to right, #FADFB6, #F4C073);
-    border: 3px solid #007bff;
-    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5) !important; 
-    // transition: all 0.3s ease; 
-    
 }
 
 .unselected {
     background-color: white;
-}
-
-
-.room-card {
-    position: relative;
-    overflow: hidden;
-    border: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    margin-bottom: 20px; /* Adjust as needed */
-}
-
-.room-card .card-img-top {
-    width: 100%;
-    height: 300px; /* Increase height for larger images */
-    object-fit: cover; /* Ensures the image covers the area without stretching */
-}
-
-.room-card .card-body {
-    padding: 1rem;
-}
-
-.room-card .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-}
-
-.room-card .card-text {
-    font-size: 1rem;
-}
-
-.room-card .badges {
-    margin-top: 0.5rem;
-}
-
-.room-card .badge {
-    background-color: #28a745;
-    color: white;
-    margin-right: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    display: inline-flex;
-    align-items: center;
-}
-
-.room-card .badge .circle {
-    width: 8px;
-    height: 8px;
-    background-color: white;
-    border-radius: 50%;
-    margin-right: 0.25rem;
-}
-
-/* Overlay for hover effect */
-.overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.room-card:hover .overlay {
-    opacity: 1;
-}
-
-/* Selected room styles */
-// .selected {
-//     border: 3px solid #007bff; /* Blue border for selected room */
-//     box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* Glow effect */
-//     background-color: rgba(0, 123, 255, 0.1); /* Light blue background */
-// }
-
-/* Additional Styles */
-.card-img-top.room-image {
-    height: 300px; /* Increase height for larger images */
-    object-fit: cover; /* Ensures the image covers the area without stretching */
-}
-
-.align-bottom{
-    font-size: 18px;
-}
-
-.form-label {
-    // font-weight: 700;
-    font-size: 18px;
-} 
-
-.form-control{
-    font-size: 18px;
 }

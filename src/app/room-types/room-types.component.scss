@@ -27,13 +27,14 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    margin-right:5px;
+    margin-right:10px;
+    margin-top: 2px;
   }
   .success-badge {
     display: inline-flex;
     color: black;
     .circle {
-        background: #05B052;
+        background: #606075;
     }
   
     &.status {
@@ -52,3 +53,59 @@
   .unselected {
     background-color: white;
   }
+
+  .page-breadcrumb {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+  }
+  
+  h3 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  .card {
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .card-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  
+  .card-subtitle {
+    font-size: 1.2rem;
+    color: #6c757d;
+  }
+  
+  .room-image {
+    max-height: 400px;
+    object-fit: cover;
+  }
+  
+  .badge {
+    background-color: rgb(127, 238, 205); 
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+  
+  // .btn-primary {
+  //   background-color: #007bff;
+  //   border-color: #007bff;
+  //   font-size: 1rem;
+  //   font-weight: 500;
+  //   padding: 10px 20px;
+  // }
+  
+  // .btn-primary:hover {
+  //   background-color: #0056b3;
+  //   border-color: #004085;
+  // }
+  

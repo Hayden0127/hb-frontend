@@ -65,7 +65,7 @@ export class AuthenticationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.navigate(['/authentication/login']);
+    // this.router.navigate(['/authentication/login']);
   }
 
   redirectScheduleInstall(){
